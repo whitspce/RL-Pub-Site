@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stream from Roam to home OBS | Roam Live</title>
+    <meta name="description" content="Set up Tailscale, encrypted SRT, and OBS WebSocket so Roam Live can send video to OBS and control it safely.">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="canonical" href="https://roamlive.app/guides/stream-to-obs/">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Roam Live home">
+        <img src="/assets/wordmark.png" width="659" height="228" alt="Roam Live">
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/guides/" aria-current="page">Guides</a>
+        <a href="/support/">Support</a>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <header class="page-head">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/guides/">Guides</a> <span aria-hidden="true">/</span> <span aria-current="page">Phone to home OBS</span></nav>
+        <p class="eyebrow">Advanced setup</p>
+        <h1 class="page-title">Send your phone to OBS at home.</h1>
+        <p class="lede">This tested setup uses Tailscale for a private connection, encrypted SRT for video and audio, and OBS WebSocket for remote controls.</p>
+      </header>
+
+      <article class="prose">
+        <div class="callout danger">
+          <h2>Do not open router ports</h2>
+          <p>Do not forward UDP 1234 or TCP 4455. Do not use your public IP address, Tailscale Funnel, or Tailscale Serve for this setup.</p>
+        </div>
+
+        <h2 id="how-it-works">What you are setting up</h2>
+        <p>Roam makes two separate connections to your home computer:</p>
+        <ul>
+          <li><strong>Encrypted SRT on UDP 1234</strong> sends the phone's video and audio to an OBS Media Source.</li>
+          <li><strong>OBS WebSocket on TCP 4455</strong> controls scenes, BRB, and OBS streaming. It does not carry video or audio.</li>
+        </ul>
+        <p>Starting Roam sends the phone feed to OBS. It does not make OBS broadcast publicly unless you start streaming in OBS or enable Roam's OBS sync option.</p>
+
+        <div class="callout warning">
+          <h3>Use two different passwords</h3>
+          <p>The SRT passphrase protects the phone feed. The OBS WebSocket password protects the remote controls. Make both unique and do not reuse one for the other.</p>
+        </div>
+
+        <h2 id="before-starting">Before you start</h2>
+        <ul class="checklist">
+          <li>Install OBS Studio 28 or newer on the home computer.</li>
+          <li>Have the phone and home computer ready to sign in to the same Tailscale network.</li>
+          <li>Keep any normal VPN paused for the first test. You can test coexistence later.</li>
+          <li>Make sure ordinary websites load on both devices before you begin.</li>
+          <li>Stop OBS output before the receive-only test. The main OBS control must say <strong>Start Streaming</strong>.</li>
+          <li>In <strong>Roam &gt; Settings &gt; OBS</strong>, keep <strong>Sync OBS streaming with Roam</strong> off for the receive-only test.</li>
+        </ul>
+
+        <div class="callout warning">
+          <h3>Prefer Ethernet or separate Wi-Fi bands</h3>
+          <p>On one tested Linux computer, putting the phone and computer on the same 2.4 GHz Wi-Fi band froze the OBS feed and disrupted the computer's internet. This appeared to be a hardware-specific compatibility issue and will not affect every Wi-Fi setup.</p>
+          <p>Connect the OBS computer by Ethernet when possible. Otherwise, put the phone and computer on different bands, such as the phone on 5 GHz and the computer on 2.4 GHz. Different Wi-Fi names do not always mean different bands. If the feed freezes or normal internet degrades, stop Roam and OBS immediately.</p>
+        </div>
+
+        <h2 id="tailscale">1. Connect the phone and computer with Tailscale</h2>
+        <ol>
+          <li>Install Tailscale on the phone and home computer from the <a href="https://tailscale.com/download">official Tailscale download page</a>.</li>
+          <li>Sign in to the same Tailscale account on both devices.</li>
+          <li>On the phone, open Tailscale and press <strong>Connect</strong>. Leave <strong>Exit node</strong> set to <strong>None</strong>.</li>
+          <li>Confirm both devices appear in Tailscale.</li>
+          <li>Find the home computer's Tailscale IPv4 address. It starts with <code>100.</code>. Save it as <code>&lt;PC_TAILSCALE_IP&gt;</code> for the next steps.</li>
+          <li>With Tailscale connected, confirm an ordinary website still loads on the phone and computer.</li>
+        </ol>
+        <p>Tailscale uses an existing identity provider rather than a separate Tailscale password. It may ask you to continue with Google, Microsoft, GitHub, Apple, or another supported sign-in provider.</p>
+        <p>Linux may not add a Tailscale icon to the app menu. It normally runs as a background service. These commands confirm it is installed, start sign-in, and show its Tailscale address:</p>
+        <pre class="code-block"><code>tailscale version
+sudo tailscale up --timeout=5m
+tailscale ip -4</code></pre>
+        <p>When <code>sudo</code> asks for a password, enter the password used to sign in to the computer. Nothing appears while you type. The second command gives you a web address. Open it, sign in, and return to the terminal after it reports success.</p>
+        <p>If the command stays on a blank line without giving you an address, press <strong>Ctrl+C</strong>, pause another VPN temporarily, and run it again. After signing in, <code>tailscale status</code> should list both devices.</p>
+        <div class="callout warning">
+          <h3>Do not lock the phone to a disconnected VPN</h3>
+          <p>For this setup, leave Android's <strong>Always-on VPN</strong> and <strong>Block connections without VPN</strong> options off unless you already understand them. They can block normal internet access whenever Tailscale is disconnected.</p>
+        </div>
+
+        <h2 id="srt-passphrase">2. Make an SRT passphrase</h2>
+        <p>Make a random passphrase between 20 and 79 letters and numbers. Avoid spaces and symbols because this passphrase will be inside two URLs.</p>
+        <p>Save it as <code>&lt;SRT_PASSPHRASE&gt;</code>. You will enter exactly the same SRT passphrase in Roam and OBS.</p>
+
+        <h2 id="websocket">3. Enable OBS WebSocket</h2>
+        <ol>
+          <li>In OBS, open <strong>Tools &gt; WebSocket Server Settings</strong>. Some OBS versions call this <strong>obs-websocket Settings</strong>.</li>
+          <li>Enable the WebSocket server and authentication.</li>
+          <li>Keep the server port set to <strong>4455</strong>.</li>
+          <li>Generate or enter a unique password. Save this as your <strong>OBS WebSocket password</strong>.</li>
+          <li>Apply the changes.</li>
+        </ol>
+        <p>This password is entered only in <strong>Roam Settings &gt; OBS</strong>. It does not go in either SRT URL.</p>
+
+        <h2 id="obs-source">4. Add the phone feed to OBS</h2>
+        <ol>
+          <li>Create an OBS scene named <strong>Phone Feed</strong>.</li>
+          <li>Add a <strong>Media Source</strong> to that scene.</li>
+          <li>Turn off <strong>Local File</strong>.</li>
+          <li>Paste the listener URL below into <strong>Input</strong>.</li>
+          <li>Set <strong>Input Format</strong> to <code>mpegts</code>.</li>
+          <li>Leave <strong>Close file when inactive</strong> off.</li>
+        </ol>
+        <pre class="code-block"><code>srt://&lt;PC_TAILSCALE_IP&gt;:1234?mode=listener&amp;passphrase=&lt;SRT_PASSPHRASE&gt;&amp;pbkeylen=32&amp;latency=2000000</code></pre>
+        <p>Replace both placeholders. Do not add square or angle brackets around the real values.</p>
+        <p>If several OBS scenes use the phone, reuse the same <strong>Phone Feed</strong> Media Source in each one by choosing <strong>Add Existing</strong>. Do not create another listener for every scene. One shared source avoids reconnect delays when you change scenes.</p>
+
+        <h2 id="roam-stream">5. Enter the phone's SRT URL in Roam</h2>
+        <p>On the phone, open <strong>Roam &gt; Settings &gt; Stream</strong>. Enter this caller URL as the Stream URL:</p>
+        <pre class="code-block"><code>srt://&lt;PC_TAILSCALE_IP&gt;:1234/live?passphrase=&lt;SRT_PASSPHRASE&gt;&amp;pbkeylen=256&amp;latency=2000</code></pre>
+        <p>Replace both placeholders with the same computer address and SRT passphrase used in OBS.</p>
+        <div class="callout warning">
+          <h3>The two SRT URLs are different</h3>
+          <p>Roam is the caller. OBS is the listener. The key and latency numbers use different units in each app, so copy the correct URL into each place. Never add <code>mode=listener</code> to the Roam URL.</p>
+        </div>
+
+        <h2 id="roam-obs">6. Connect Roam's OBS controls</h2>
+        <p>Open <strong>Roam &gt; Settings &gt; OBS</strong> and enter:</p>
+        <ul>
+          <li><strong>Host:</strong> the computer's Tailscale IPv4 address, without <code>http://</code>.</li>
+          <li><strong>Port:</strong> <code>4455</code>.</li>
+          <li><strong>Password:</strong> the OBS WebSocket password from step 3.</li>
+        </ul>
+        <p>Connect and wait for the OBS status to turn green. Choose your OBS BRB scene if you want Roam's BRB control to switch scenes.</p>
+
+        <h2 id="test">7. Run a receive-only test</h2>
+        <div class="callout danger">
+          <h3>Preflight: keep OBS output stopped</h3>
+          <p>Before starting Roam, confirm the main OBS control says <strong>Start Streaming</strong> and <strong>Sync OBS streaming with Roam</strong> is off. If OBS says <strong>Stop Streaming</strong>, stop its output first. Roam can then send media into OBS without starting a public broadcast.</p>
+        </div>
+        <ol>
+          <li>Keep OBS open with the <strong>Phone Feed</strong> source active.</li>
+          <li>In Roam, start with <strong>Data saver</strong> and <strong>Auto bitrate</strong> on.</li>
+          <li>Hold <strong>Go Live</strong> in Roam.</li>
+          <li>Confirm OBS receives moving video and that its audio meter moves.</li>
+          <li>Confirm OBS still says <strong>Start Streaming</strong>. This proves the test is not public.</li>
+          <li>Use Roam to change one OBS scene, then test BRB.</li>
+          <li>Stop Roam and confirm the phone feed ends.</li>
+        </ol>
+
+        <h2 id="public-stream">8. Configure OBS output separately</h2>
+        <p>The SRT Stream URL in Roam is the input to OBS. Your public broadcast is a separate output configured under <strong>OBS &gt; Settings &gt; Stream</strong>:</p>
+        <ul>
+          <li><strong>Service:</strong> choose your service if OBS lists it. Otherwise choose <strong>Custom</strong>.</li>
+          <li><strong>Server:</strong> choose the recommended server or enter the server address supplied by Twitch, YouTube, Kick, your restreaming service, or another compatible destination.</li>
+          <li><strong>Stream Key:</strong> enter the private key supplied by that service.</li>
+        </ul>
+        <p>Do not put the OBS server or stream key in Roam. Do not replace Roam's SRT URL. Never show a real stream key in screenshots or messages.</p>
+
+        <h3>Twitch bandwidth-test profile</h3>
+        <ol>
+          <li>In OBS, choose <strong>Profile &gt; Duplicate</strong> and name the copy <strong>Twitch Bandwidth Test</strong>.</li>
+          <li>Open <strong>Settings &gt; Stream</strong> and set <strong>Service</strong> to Twitch.</li>
+          <li>If OBS is connected to your Twitch account, turn on <strong>Enable Bandwidth Test Mode</strong>. If you use a Stream Key field instead, put <code>?bandwidthtest=true</code> immediately after your private key. The field should have the form <code>&lt;TWITCH_STREAM_KEY&gt;?bandwidthtest=true</code>. The suffix belongs after the key, not in the Server field.</li>
+          <li>Apply the settings, open <a href="https://inspector.twitch.tv/">Twitch Inspector</a>, and start OBS output. Bandwidth Test Mode disables live viewing while Inspector reports the stream's health.</li>
+          <li>Open your public Twitch channel in a browser where you are not signed in and confirm it remains offline. If the channel appears live, stop OBS immediately and check the test setting or key suffix.</li>
+          <li>Stop OBS after the test. Select your normal OBS profile before an intended public stream.</li>
+        </ol>
+        <p>This is Twitch's <a href="https://dev.twitch.tv/docs/video-broadcast/#broadcast-urls-and-stream-keys">official bandwidth-test format</a>. Keep the real key private.</p>
+
+        <p>After the OBS output test works, repeat the phone-to-OBS test from mobile data:</p>
+        <ol>
+          <li>Turn off Wi-Fi on the phone and turn on mobile data.</li>
+          <li>Confirm Tailscale still says <strong>Connected</strong> with no exit node.</li>
+          <li>Start Roam and confirm OBS receives the phone feed.</li>
+          <li>Test a scene change before leaving home.</li>
+        </ol>
+        <p>To control the OBS broadcast from Roam, open the OBS panel and hold <strong>Start OBS streaming</strong>. Roam warns that this may broadcast publicly. <strong>Stop OBS streaming</strong> stops it immediately. Leave automatic OBS sync off until both manual controls have passed your own test.</p>
+
+        <h2 id="troubleshooting">Troubleshooting</h2>
+        <h3>Roam's OBS status stays on Connecting</h3>
+        <p>Check Tailscale first. Open it on the phone and computer and confirm it is running and connected. Then check that OBS is open, the host is the computer's Tailscale address, the port is 4455, and the OBS WebSocket password is correct.</p>
+
+        <h3>OBS controls work, but the phone feed is blank</h3>
+        <p>The control and video paths are separate. Check both SRT URLs, the shared SRT passphrase, UDP port 1234, <code>mpegts</code>, and that the Phone Feed source is active.</p>
+
+        <h3>The feed stops when you change scenes</h3>
+        <p>Create one Phone Feed Media Source and add that same existing source wherever it is needed. Keep <strong>Close file when inactive</strong> off.</p>
+
+        <h3>The computer's internet slows or stops</h3>
+        <p>Stop Roam and OBS immediately. Connect the OBS computer by Ethernet, or move the phone and computer onto different Wi-Fi bands. Recheck ordinary internet access before another test.</p>
+
+        <h3>It works at home but not on mobile data</h3>
+        <p>Confirm Tailscale is connected on both devices, the exit node is None, and the home computer is awake with OBS open. Temporarily pause another VPN to establish a clean baseline.</p>
+
+        <h3>A firewall blocks the connection</h3>
+        <p>Allow inbound UDP 1234 and TCP 4455 only on the private Tailscale network. Do not disable the firewall or create public router port forwards. The exact steps depend on your operating system.</p>
+
+        <div class="callout warning">
+          <h3>Keep connection details private</h3>
+          <p>Do not share stream URLs, either password, private Tailscale addresses, or screenshots containing them. Rotate a password if it is exposed.</p>
+        </div>
+
+        <p>Still stuck? Go to <a href="/support/">Support</a>.</p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <span>Roam Live</span>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/guides/">Guides</a>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+      </nav>
+    </footer>
+  </body>
+</html>

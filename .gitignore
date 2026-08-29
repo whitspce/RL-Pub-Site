@@ -1,0 +1,17 @@
+.DS_Store
+.idea/
+.vscode/
+.direnv/
+.envrc
+.env
+.env.*
+service-account*.json
+*.pem
+*.key
+*.log
+*.swp
+*.swo
+*~
+*.bak
+*.orig
+node_modules/

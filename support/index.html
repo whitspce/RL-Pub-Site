@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Support | Roam Live</title>
+    <meta name="description" content="Get help with Roam Live, report a bug, or export diagnostics safely.">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="canonical" href="https://roamlive.app/support/">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Roam Live home">
+        <img src="/assets/wordmark.png" width="659" height="228" alt="Roam Live">
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/guides/">Guides</a>
+        <a href="/support/" aria-current="page">Support</a>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <header class="page-head">
+        <p class="eyebrow">Support</p>
+        <h1 class="page-title">Get unstuck.</h1>
+        <p class="lede">Run the quick checks first. If something still fails, send a small report with the details needed to reproduce it.</p>
+      </header>
+
+      <article class="prose">
+        <h2 id="quick-checks">Quick checks</h2>
+        <p><strong>Current test release: 0.10.3.</strong> <a href="https://play.google.com/store/apps/details?id=dev.whitespc.roam">Install the open beta from Google Play</a>.</p>
+        <ul>
+          <li>Run one private or unlisted test with <strong>Data saver</strong> and <strong>Auto bitrate</strong> on.</li>
+          <li>Under <strong>Settings &gt; Stream</strong>, enter a complete RTMPS or encrypted SRT URL.</li>
+          <li>Check camera, microphone, notification, and optional location permissions.</li>
+          <li>Do not forward UDP 1234 or TCP 4455. Follow the tested home OBS guide instead.</li>
+        </ul>
+        <p>Follow <a href="/guides/stream-to-platform/">Phone to platform</a> for a direct stream, or <a href="/guides/stream-to-obs/">Phone to home OBS</a> for a private phone-to-OBS connection.</p>
+
+        <h2 id="report">Report a problem</h2>
+        <p>Email <a href="mailto:feedback@roamlive.app">feedback@roamlive.app</a> to report a problem. Include:</p>
+        <ul>
+          <li>Roam version.</li>
+          <li>Phone model and Android version.</li>
+          <li>Streaming protocol and destination type, but no URL or key.</li>
+          <li>What you expected and what happened.</li>
+          <li>Exact steps that make it happen again.</li>
+          <li>Whether it happens on Wi-Fi, mobile data, or both.</li>
+        </ul>
+        <div class="callout danger">
+          <h3>Do not post secrets</h3>
+          <p>Never send a stream URL, stream key, SRT passphrase, OBS password, private tailnet details, or a screenshot containing them. Rotate a credential at once if it is exposed.</p>
+        </div>
+
+        <h2 id="diagnostics">Export diagnostics</h2>
+        <ol>
+          <li>Open <strong>Settings &gt; Help &amp; about</strong>.</li>
+          <li>Choose <strong>Save diagnostic log</strong>.</li>
+          <li>Open the text file and review it before sharing.</li>
+          <li>Send it by email only when it is relevant to the report.</li>
+        </ol>
+        <p>The export is designed to remove stream URLs and passwords. It can still include phone details, configured chat channel names, and operational events. Remove anything you do not want to share.</p>
+
+        <h2 id="security">Report a security issue</h2>
+        <p>For security problems, email <a href="mailto:feedback@roamlive.app?subject=Private%20security%20report">feedback@roamlive.app</a> with a short description and a safe way to reproduce it. Do not include live credentials.</p>
+
+        <h2 id="privacy">Privacy questions</h2>
+        <p>The <a href="/privacy/">privacy page</a> explains streaming, chat, overlays, location, OBS, diagnostics, updates, and local storage.</p>
+
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <span>Roam Live</span>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/guides/">Guides</a>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+      </nav>
+    </footer>
+  </body>
+</html>

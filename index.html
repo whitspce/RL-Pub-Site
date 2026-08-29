@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Roam Live | IRL streaming from Android</title>
+    <meta name="description" content="Roam Live is a free Android app for IRL streaming from one phone.">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="canonical" href="https://roamlive.app/">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="stylesheet" href="/style.css">
+    <meta property="og:title" content="Roam Live">
+    <meta property="og:description" content="Go live with one Android phone over RTMPS or encrypted SRT.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://roamlive.app/">
+    <meta property="og:image" content="https://roamlive.app/assets/wordmark.png">
+    <meta name="twitter:card" content="summary">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Roam Live",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Android 10 or newer",
+        "softwareVersion": "0.10.3",
+        "description": "A free Android app for IRL streaming over RTMPS or encrypted SRT.",
+        "url": "https://roamlive.app/"
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Roam Live home">
+        <img src="/assets/wordmark.png" width="659" height="228" alt="Roam Live">
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/guides/">Guides</a>
+        <a href="/support/">Support</a>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Android IRL streaming</p>
+          <h1>Go live with one phone.</h1>
+          <p class="lede">Roam Live is a free streaming app for Android. Stream over RTMPS or encrypted SRT.</p>
+          <div class="actions">
+            <a class="button" href="https://play.google.com/store/apps/details?id=dev.whitespc.roam">Get it on Google Play</a>
+            <a class="button secondary" href="/guides/how-to-use/">Open the app guide</a>
+          </div>
+          <p class="small">Open beta. Android 10 or newer.</p>
+        </div>
+        <aside class="hero-side" aria-label="Quick start">
+          <p class="eyebrow">Start here</p>
+          <h2>Phone first</h2>
+          <p>Open <strong>Settings &gt; Stream</strong> and enter a complete RTMPS or encrypted SRT URL supplied by your platform or service.</p>
+          <p><a href="/guides/stream-to-platform/">Check the direct streaming guide</a></p>
+        </aside>
+      </section>
+
+      <section class="section" aria-labelledby="path-title">
+        <div class="section-heading">
+          <p class="eyebrow">One path that grows</p>
+          <h2 id="path-title">Start simple. Add complexity when it earns its place.</h2>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <span class="step-number">1</span>
+            <h3>Stream from the phone</h3>
+            <p>Send one camera directly to a compatible RTMPS or encrypted SRT destination. Read chat, use the BRB screen, and keep a local recording.</p>
+          </article>
+          <article class="card">
+            <span class="step-number">2</span>
+            <h3>Learn what matters</h3>
+            <p>Test your signal, audio, bitrate, overlays, and battery life before adding more moving parts.</p>
+          </article>
+          <article class="card">
+            <span class="step-number">3</span>
+            <h3>Move production home</h3>
+            <p>Use the tested home OBS guide to send your phone feed over encrypted SRT and control OBS through Tailscale.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="features-title">
+        <div class="section-heading">
+          <p class="eyebrow">Built for the phone</p>
+          <h2 id="features-title">Enough control without a control room.</h2>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3>Chat on screen</h3>
+            <p>Read public Twitch, Kick, and YouTube chat on the phone. It is not drawn into the broadcast.</p>
+          </article>
+          <article class="card">
+            <h3>BRB &amp; Stealth</h3>
+            <p>Keep chat and controls out of sight when the rear camera faces you and the screen faces the public. While live, Stealth blacks out the display and can reduce screen power use and heat.</p>
+          </article>
+          <article class="card">
+            <h3>Overlays</h3>
+            <p>Add text, images, and web overlays. Build a useful layout without turning the phone into a desktop editor.</p>
+          </article>
+          <article class="card">
+            <h3>Field reliability</h3>
+            <p>Auto bitrate, reconnect attempts, local recording, an audio level meter, and thermal safeguards help with real mobile conditions.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="release-title">
+        <div class="reading">
+          <p class="eyebrow">Release status</p>
+          <h2 id="release-title">Google Play open beta.</h2>
+          <p>Roam Live 0.10.3 is available through the Google Play open beta. <a href="https://play.google.com/store/apps/details?id=dev.whitespc.roam">Open Roam Live on Google Play</a>.</p>
+          <p class="small">Google Play is the current release channel. APK downloads are paused.</p>
+          <div class="callout warning">
+            <h3>Protect your stream key</h3>
+            <p>Treat a stream URL like a password. Use RTMPS or encrypted SRT. Rotate the key or passphrase if it is exposed.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="privacy-title">
+        <div class="reading">
+          <p class="eyebrow">Privacy</p>
+          <h2 id="privacy-title">No Roam account or developer analytics.</h2>
+          <p class="lede">Roam sends media and network requests only where a feature needs them. Streaming platforms, chat services, web overlays, Tailscale, and the website host still handle data when you use those services.</p>
+          <p><a href="/privacy/">Read the full privacy details</a></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Roam Live</span>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/guides/">Guides</a>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+      </nav>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Using Roam Live | App guide</title>
+    <meta name="description" content="A practical guide to Roam Live quality, audio, chat, overlays, recording, BRB, Stealth, and OBS controls.">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="canonical" href="https://roamlive.app/guides/how-to-use/">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Roam Live home">
+        <img src="/assets/wordmark.png" width="659" height="228" alt="Roam Live">
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/guides/" aria-current="page">Guides</a>
+        <a href="/support/">Support</a>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <header class="page-head">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/guides/">Guides</a> <span aria-hidden="true">/</span> <span aria-current="page">Using Roam</span></nav>
+        <p class="eyebrow">App reference</p>
+        <h1 class="page-title">Set up the phone for a real stream.</h1>
+        <p class="lede">Use the safe settings below for the first test, then change one thing at a time. A stable 720p stream is better than an unstable 1080p stream.</p>
+      </header>
+
+      <article class="prose">
+        <h2 id="first-stream">Your first stream</h2>
+        <ol>
+          <li>Open <strong>Settings &gt; Stream</strong> and enter a complete RTMPS or encrypted SRT URL.</li>
+          <li>Start with <strong>Data saver</strong> and <strong>Auto bitrate</strong> on.</li>
+          <li>Set up the microphone and watch the audio level before going live.</li>
+          <li>Run a private or unlisted mobile-data test.</li>
+          <li>Hold the live button until its ring completes. Tap Stop when finished.</li>
+        </ol>
+        <p>The <a href="/guides/stream-to-platform/">direct streaming guide</a> explains destination setup and a safe first test.</p>
+
+        <h2 id="stream">Stream</h2>
+        <p>Enter the complete destination supplied by your streaming platform or service under <strong>Settings &gt; Stream</strong>. If you hold <strong>Go Live</strong> without a valid destination, Roam offers to open Stream settings.</p>
+        <p>Stream settings show the complete destination and let you keep a small set of saved destinations. These values contain secrets, are hidden by default, and are encrypted on the phone. You cannot change the active destination while live.</p>
+        <div class="callout warning">
+          <h3>Use encrypted transport</h3>
+          <p>Roam accepts RTMPS or encrypted SRT only. Treat the complete destination as a password.</p>
+        </div>
+
+        <h2 id="quality">Quality</h2>
+        <p>Roam offers 480p, 720p, and 1080p at 30 fps. Resolution locks while live. Bitrate can change during a stream.</p>
+        <ul>
+          <li><strong>Data saver, 480p at 30 fps:</strong> the safest first test and useful for weak signal, long runtime, or a hot phone.</li>
+          <li><strong>Recommended, 720p at 30 fps:</strong> the normal next step after the first test. It balances detail, data use, and phone workload.</li>
+          <li><strong>Sharp, 1080p at 30 fps:</strong> use only after field testing. It needs more upload, power, and cooling.</li>
+        </ul>
+        <p><strong>Auto bitrate</strong> lowers the encoder bitrate when the connection weakens, then raises it toward your selected maximum as conditions recover.</p>
+
+        <h2 id="audio">Audio</h2>
+        <p>Choose the microphone in <strong>Settings &gt; Audio</strong>. Wired and USB microphones usually give the best result. Bluetooth headsets use a phone-call voice mode and should be treated as a backup.</p>
+        <p>Enable the audio-level HUD control so you can catch silence and clipping before a stream. Adjust input gain carefully. A louder signal is not always a cleaner one.</p>
+
+        <h2 id="camera">Camera</h2>
+        <p><strong>Image stabilization</strong> can smooth handheld footage, but it crops the frame and depends on phone support.</p>
+        <p><strong>Dual camera</strong> adds a front and rear camera view. It is demanding and can heat the phone quickly. Leave it off for long streams unless your phone has passed a thermal test.</p>
+
+        <h2 id="chat">Chat</h2>
+        <p>Roam can show public Twitch, Kick, and YouTube chat on the phone. Enter the public channel name or YouTube handle under <strong>Settings &gt; Chat</strong>.</p>
+        <p>The chat panel is for the streamer and is not drawn into the broadcast. YouTube chat uses an unofficial interface, so it may stop working when YouTube changes its site.</p>
+
+        <h2 id="overlays">Overlays</h2>
+        <p>The overlay editor supports text, images, and web pages. Keep the first layout simple and check it at the same orientation and resolution you will stream.</p>
+        <ul>
+          <li><strong>Text:</strong> use fixed text or supported live tokens.</li>
+          <li><strong>Images:</strong> import only what you need. Roam stores the imported copy in its private app storage.</li>
+          <li><strong>Web:</strong> use an HTTPS page you trust. Its provider receives normal web requests and its code runs inside the overlay view.</li>
+        </ul>
+        <p>Location-backed tokens ask for location permission. If you place location details on an overlay, those details become part of the video viewers receive.</p>
+
+        <h2 id="break">BRB &amp; Stealth</h2>
+        <p>The BRB button shows your full-screen BRB message or custom image to viewers and mutes broadcast audio. Configure it in <strong>Settings &gt; BRB &amp; Stealth</strong>.</p>
+        <p>Stealth keeps chat and controls out of sight when the rear camera faces you and the screen faces the public. It is available only while streaming. Tap Stealth to black out the display while the stream continues, then hold anywhere until Stealth exits. The darker display can also reduce screen power use and heat. The optional recording dot and haptic pulse help remind you that the phone is still live.</p>
+        <p>When OBS is paired and a BRB scene is selected, the same HUD control switches the OBS scene. Enable <strong>Mute mic and camera during OBS BRB</strong> if you want the phone source blocked too.</p>
+
+        <h2 id="reliability">Reliability and recording</h2>
+        <p><strong>Record to phone while streaming</strong> saves a copy under <strong>Movies/Roam</strong>. Recording continues while the network stream reconnects. Roam stops the recording, not the stream, if storage becomes too low.</p>
+        <p>Choose how long Roam should retry a dropped stream. A short limit is easier to reason about during testing. The Forever option is useful only when you understand how the platform and OBS behave after a long outage.</p>
+        <p>Under <strong>Settings &gt; Reliability</strong>, find <strong>Keep streams running</strong> and choose <strong>Open battery settings</strong>. Find Roam in Android's battery settings and allow it to keep working in the background. Phone vendors label this differently.</p>
+        <div class="callout warning">
+          <h3>Heat wins eventually</h3>
+          <p>Shade the phone, remove a thick case, avoid dual camera, and keep charging hardware out of direct sun. Roam can reduce load, but software cannot make an overheated phone safe.</p>
+        </div>
+
+        <h2 id="obs">OBS</h2>
+        <p>Roam can send video and audio to OBS over encrypted SRT, then use OBS WebSocket for remote scene and broadcast controls. These are separate connections.</p>
+        <p>Follow the tested <a href="/guides/stream-to-obs/">phone-to-home-OBS guide</a>. Do not forward UDP 1234 or TCP 4455 on your router.</p>
+
+        <h2 id="backup">Backups, updates, and diagnostics</h2>
+        <p><strong>Help &amp; about</strong> lets you export a password-protected backup, import it on another phone, check for updates, and save diagnostics. The in-app update check is only needed for APK installs. Google Play handles updates for Play Store installs.</p>
+        <p>A complete backup includes settings, overlays, stream URLs or keys, SRT passphrases, and the OBS password. Keep the backup file private and delete it when you no longer need it. Roam cannot recover a forgotten backup password.</p>
+        <p>Diagnostics include device details, configured chat channel names, and engine events. They are designed to redact stream URLs and passwords. Review the file before sharing it and send it only through a private support channel.</p>
+
+        <p>Need help? Go to <a href="/support/">Support</a>.</p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <span>Roam Live</span>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/guides/">Guides</a>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+      </nav>
+    </footer>
+  </body>
+</html>
