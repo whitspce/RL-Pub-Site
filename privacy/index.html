@@ -1,108 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Privacy | Roam Live</title>
-    <meta name="description" content="What Roam Live stores on your phone and which services receive data when you stream, read chat, use overlays, or connect to OBS.">
-    <meta name="theme-color" content="#0a0a0a">
-    <link rel="canonical" href="https://roamlive.app/privacy/">
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-    <link rel="stylesheet" href="/style.css">
-  </head>
-  <body>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="site-header">
-      <a class="brand" href="/" aria-label="Roam Live home">
-        <img src="/assets/wordmark.png" width="659" height="228" alt="Roam Live">
-      </a>
-      <nav class="site-nav" aria-label="Main navigation">
-        <a href="/guides/">Guides</a>
-        <a href="/support/">Support</a>
-      </nav>
-    </header>
-
-    <main id="main-content">
-      <header class="page-head">
-        <p class="eyebrow">Privacy</p>
-        <h1 class="page-title">Your stream goes where you send it.</h1>
-        <p class="lede">Roam has no account system, developer analytics, ads, or remote crash reporting. Features still connect to the destinations and services you choose.</p>
-        <p class="small">Effective 29 August 2026</p>
-      </header>
-
-      <article class="prose">
-        <h2 id="summary">The short version</h2>
-        <ul>
-          <li>Roam does not send usage analytics or crash reports to the developer.</li>
-          <li>Camera and microphone media goes to the stream destination you configure.</li>
-          <li>Chat, web overlays, optional location features, updates, and Tailscale contact their own services when used.</li>
-          <li>Stream destinations and the OBS password are encrypted on the phone with Android Keystore.</li>
-          <li>Exported recordings, password-protected backups, and diagnostics are files you control and must protect yourself.</li>
-        </ul>
-
-        <h2 id="streaming">Streaming</h2>
-        <p>Roam captures camera and microphone media, combines enabled overlays, and sends the result to the RTMPS or encrypted SRT destination you enter. That destination receives the broadcast and normal connection data such as your IP address and timing information.</p>
-        <ul>
-          <li><strong>RTMPS</strong> encrypts the network connection and verifies the server name by default.</li>
-          <li><strong>SRT</strong> uses a required passphrase to encrypt the connection.</li>
-        </ul>
-        <p>Roam accepts RTMPS or encrypted SRT only.</p>
-        <p>The platform or server controls its own retention, moderation, and viewer access. Read its privacy terms before streaming.</p>
-
-        <h2 id="chat">Chat</h2>
-        <p>Roam can read public Twitch, Kick, and YouTube chat without signing you in. When enabled, it sends the public channel name or handle you configure to those services and connects to their web or chat endpoints.</p>
-        <p>Those services receive normal network details, including your IP address and device connection metadata. YouTube chat uses an unofficial public interface and may change without notice. Roam does not send chat messages or provide chat moderation.</p>
-
-        <h2 id="obs">OBS and Tailscale</h2>
-        <p>OBS WebSocket traffic is not encrypted by Roam itself. Use it only through a private network such as Tailscale. Keep OBS authentication enabled and never expose TCP 4455 to the public internet.</p>
-        <p>An encrypted SRT feed can also travel through Tailscale. Tailscale encrypts traffic between tailnet devices and handles account, device, and network metadata under its own <a href="https://tailscale.com/privacy-policy">privacy policy</a>. Tailscale is a separate optional service.</p>
-
-        <h2 id="overlays">Overlays</h2>
-        <p>Imported images, HTML, and ZIP overlays are copied into Roam's private app storage. A local HTML overlay can still contact the internet if its code loads remote resources.</p>
-        <p>Remote web overlays must use HTTPS. They run with JavaScript and local web storage inside the app. The overlay provider receives normal web request details and can process anything its page asks you to enter or displays. Roam disables third-party cookies, but that does not make an untrusted overlay safe.</p>
-
-        <h2 id="location">Location</h2>
-        <p>Location access is optional and is requested only when an enabled overlay uses a location-backed token. Coordinates are used to produce the selected overlay value. While the main camera preview is visible, the value updates so you can check it before going live. Roam does not store a location history.</p>
-        <p>If you leave the camera preview while offline, Roam stops location. During an active stream, location can continue in Settings or while Roam is not on screen so the enabled overlay stays current. Roam pauses location during BRB and stops it when the stream ends or no visible overlay needs it. Android shows the active-stream notification while Roam streams in the background.</p>
-        <p>If you show a location, city, speed, or similar value on an overlay, that value becomes part of the video sent to the destination and seen by viewers. Resolving a city name may use the Android device's configured geocoding provider, which may receive coordinates.</p>
-
-        <h2 id="storage">Storage on the phone</h2>
-        <p>Ordinary settings and chat channel names are kept in the app's private storage. Stream destinations and the OBS password are encrypted using a key held by Android Keystore. Android cloud backup is disabled for Roam.</p>
-        <p>Optional local recordings are saved under <strong>Movies/Roam</strong>. A backup is a password-protected file you choose to create. It includes settings, overlays and their local files, saved destinations, the active or draft Stream URL, OBS details, and other private connection details. Anyone with both the backup file and its password can read those details. Keep the file private, delete it when you no longer need it, and remember that Roam cannot recover a forgotten password.</p>
-        <p>Uninstalling Roam or clearing its app data removes its private data. Recordings, backups, and diagnostics exported to shared storage remain until you delete them.</p>
-
-        <h2 id="diagnostics">Diagnostics</h2>
-        <p>Roam keeps a small rolling operational log in private app storage. It stays on the phone unless you export it. An exported log can include the phone manufacturer and model, Android version, configured chat channel names, connection state, and engine events.</p>
-        <p>Diagnostics are designed to redact stream URLs and passwords. Review every file before sharing it. Do not send a stream key, SRT passphrase, or OBS password in a support request.</p>
-
-        <h2 id="updates">Update checks</h2>
-        <p>APK installs can optionally fetch <code>https://roamlive.app/version.json</code>, Roam's APK release manifest, automatically at most once a day. A manual check fetches the same file immediately. Google Play installs skip this site check and update through Google Play. The site host receives normal web request data such as your IP address, time, and user agent. Roam sends no account or advertising identifier in the request.</p>
-
-        <h2 id="permissions">Android permissions</h2>
-        <ul>
-          <li><strong>Camera and microphone:</strong> required to produce a stream.</li>
-          <li><strong>Location:</strong> optional, for location-backed overlay tokens in the visible camera preview and during active streaming, including when Roam is not on screen.</li>
-          <li><strong>Notifications and foreground service:</strong> used to keep an active stream visible to Android.</li>
-          <li><strong>Files and media:</strong> accessed through Android's file picker and media storage for imports, exports, diagnostics, and recordings. Roam does not request broad file access.</li>
-        </ul>
-
-        <h2 id="website">This website</h2>
-        <p>This site has no analytics script, advertising script, payment form, or site-set cookies. Its pages and assets are served from the same site. The hosting provider and network delivery services may keep standard server and security logs.</p>
-        <p>Following an external link moves the request to that provider and its privacy terms.</p>
-
-        <h2 id="changes">Changes and contact</h2>
-        <p>This page will change when Roam's data flows change. The effective date above shows the latest review.</p>
-        <p>For privacy questions, email <a href="mailto:feedback@roamlive.app">feedback@roamlive.app</a> before sharing sensitive diagnostics. Do not include credentials or private logs.</p>
-      </article>
-    </main>
-
-    <footer class="site-footer">
-      <span>Roam Live</span>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="/guides/">Guides</a>
-        <a href="/support/">Support</a>
-        <a href="/privacy/">Privacy</a>
-      </nav>
-    </footer>
-  </body>
-</html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111211"><title>Where your data goes. | Roam Live</title><meta name="description" content="How Roam Live handles camera and microphone media, chat, overlays, optional location, OBS, diagnostics, update checks and local storage."><link rel="canonical" href="https://roamlive.app/privacy/"><link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="stylesheet" href="/style.css"><meta property="og:type" content="website"><meta property="og:site_name" content="Roam Live"><meta property="og:title" content="Where your data goes. | Roam Live"><meta property="og:description" content="How Roam Live handles camera and microphone media, chat, overlays, optional location, OBS, diagnostics, update checks and local storage."><meta property="og:url" content="https://roamlive.app/privacy/"><meta property="og:image" content="https://roamlive.app/assets/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Roam Live. IRL streaming on Android."><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Roam Live","item":"https://roamlive.app/"},{"@type":"ListItem","position":2,"name":"Where your data goes.","item":"https://roamlive.app/privacy/"}]}</script><script src="/site.js" defer></script></head>
+<body><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><div class="wrap header-inner"><a class="brand" href="/" aria-label="Roam Live home"><img src="/assets/wordmark.png" width="659" height="230" alt="Roam Live"></a><nav class="site-nav" aria-label="Main navigation"><a href="/guides/">Guides</a><a href="/faq/">FAQs</a><a href="/support/">Support</a><a class="nav-download" href="https://play.google.com/store/apps/details?id=dev.whitespc.roam">Get Roam <span aria-hidden="true">↗</span></a></nav></div></header><main id="main-content" class="wrap"><header class="page-head"><div class="breadcrumbs"><a href="/">Roam Live</a><span aria-hidden="true">/</span><span aria-current="page">Privacy</span></div><p class="eyebrow">Privacy</p><h1>Where your data goes.</h1><p class="lead">Roam has no account system, developer analytics, ads or remote crash reporting. Features connect to the destinations and services you choose.</p></header><div class="guide-layout"><aside class="page-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#summary">The short version</a></li><li><a href="#streaming">Streaming</a></li><li><a href="#chat">Chat</a></li><li><a href="#obs">OBS and Tailscale</a></li><li><a href="#overlays">Overlays</a></li><li><a href="#location">Location</a></li><li><a href="#storage">Storage on the phone</a></li><li><a href="#diagnostics">Diagnostics</a></li><li><a href="#updates">Update checks</a></li><li><a href="#permissions">Android permissions</a></li><li><a href="#website">This website</a></li><li><a href="#changes">Changes and contact</a></li></ol><div class="toc-extra"><a href="/guides/">← All guides</a><a href="/support/">Still need a hand? →</a></div></aside><article class="prose">
+<p class="page-meta">Effective date: 13 September 2026</p>
+<h2 id="summary">The short version</h2>
+<ul>
+<li>Roam does not send usage analytics or crash reports to the developer.</li>
+<li>Camera and microphone media goes to the stream destination you configure.</li>
+<li>Chat, web overlays, optional location features, updates, and Tailscale contact their own services when used.</li>
+<li>Stream destinations and the OBS password are encrypted on the phone with Android Keystore.</li>
+<li>Exported recordings, password-protected backups, and diagnostics are files you control and must protect yourself.</li>
+</ul>
+<h2 id="streaming">Streaming</h2>
+<p>Roam captures camera and microphone media, combines enabled overlays, and sends the result to the RTMP, RTMPS, or SRT destination you enter. That destination receives the broadcast and normal connection data such as your IP address and timing information.</p>
+<ul>
+<li><strong>RTMPS</strong> encrypts the network connection and verifies the server name by default.</li>
+<li><strong>SRT</strong> encrypts video and audio when Roam and the receiver use the same valid passphrase. Connection metadata, including Stream ID, is not protected by SRT payload encryption.</li>
+<li><strong>Plain RTMP and SRT without a passphrase</strong> do not encrypt video or audio in transit. Any stream key carried by the connection is also unencrypted.</li>
+</ul>
+<p>Roam accepts compatible RTMP, RTMPS, and SRT destinations. Use RTMPS or passphrase-encrypted SRT when your service supports it.</p>
+<p>The platform or server controls its own retention, moderation, and viewer access. Read its privacy terms before streaming.</p>
+<h2 id="chat">Chat</h2>
+<p>Roam can read public Twitch, Kick, and YouTube chat without signing you in. When enabled, it sends the public channel name or handle you configure to those services and connects to their web or chat endpoints.</p>
+<p>Those services receive normal network details, including your IP address and device connection metadata. YouTube chat uses an unofficial public interface and may change without notice. Roam does not send chat messages or provide chat moderation.</p>
+<h2 id="obs">OBS and Tailscale</h2>
+<p>OBS WebSocket traffic is not encrypted by Roam itself. Use it only through a private network such as Tailscale. Keep OBS authentication enabled and never expose TCP 4455 to the public internet.</p>
+<p>An encrypted SRT feed can also travel through Tailscale. Tailscale encrypts traffic between tailnet devices and handles account, device, and network metadata under its own <a href="https://tailscale.com/privacy-policy">privacy policy</a>. Tailscale is a separate optional service.</p>
+<h2 id="overlays">Overlays</h2>
+<p>Imported images, HTML, and ZIP overlays are copied into Roam's private app storage. A local HTML overlay can still contact the internet if its code loads remote resources.</p>
+<p>Remote web overlays must use HTTPS. They run with JavaScript and local web storage inside the app. The overlay provider receives normal web request details and can process anything its page asks you to enter or displays. Roam disables third-party cookies, but that does not make an untrusted overlay safe.</p>
+<h2 id="location">Location</h2>
+<p>Location access is optional and is requested only when an enabled overlay uses a location-backed token. Coordinates are used to produce the selected overlay value. While the main camera preview is visible, the value updates so you can check it before going live. Roam does not store a location history.</p>
+<p>If you leave the camera preview while offline, Roam stops location. During an active stream, location can continue in Settings or while Roam is not on screen so the enabled overlay stays current. Roam pauses location during BRB. After a stream ends, location can remain active while an overlay in the visible camera preview needs it. It stops when neither the preview nor an active stream needs it. Android shows the active-stream notification while Roam streams in the background.</p>
+<p>If you show a location, city, speed, or similar value on an overlay, that value becomes part of the video sent to the destination and seen by viewers. Resolving a city name may use the Android device's configured geocoding provider, which may receive coordinates.</p>
+<h2 id="storage">Storage on the phone</h2>
+<p>Ordinary settings and chat channel names are kept in the app's private storage. Stream destinations and the OBS password are encrypted using a key held by Android Keystore. Android cloud backup is disabled for Roam.</p>
+<p>Optional local recordings are saved under <strong>Movies/Roam</strong>. A backup is a password-protected file you choose to create. It includes settings, overlays and their local files, saved destinations, the active or draft Stream URL, OBS details, and other private connection details. Anyone with both the backup file and its password can read those details. Keep the file private, delete it when you no longer need it, and remember that Roam cannot recover a forgotten password.</p>
+<p>Uninstalling Roam or clearing its app data removes its private data. Recordings, backups, and diagnostics exported to shared storage remain until you delete them.</p>
+<h2 id="diagnostics">Diagnostics</h2>
+<p>Roam keeps a small rolling operational log in private app storage. It stays on the phone unless you export it. An exported log can include the phone manufacturer and model, Android version, configured chat channel names, connection state, and engine events.</p>
+<p>Diagnostics are designed to redact stream URLs and passwords. Review every file before sharing it. Do not send a stream key, SRT passphrase, or OBS password in a support request.</p>
+<h2 id="updates">Update checks</h2>
+<p>APK installs can optionally fetch <code>https://roamlive.app/version.json</code>, Roam's APK release manifest, automatically. After a successful automatic check, Roam waits about a day before checking again. Failed checks may retry on a later launch. A manual check fetches the same file immediately. Google Play installs skip this site check and update through Google Play. The site host receives normal web request data such as your IP address, time, and user agent. Roam sends no account or advertising identifier in the request.</p>
+<h2 id="permissions">Android permissions</h2>
+<ul>
+<li><strong>Camera and microphone:</strong> required to produce a stream.</li>
+<li><strong>Location:</strong> optional, for location-backed overlay tokens in the visible camera preview and during active streaming, including when Roam is not on screen.</li>
+<li><strong>Notifications and foreground service:</strong> used to keep an active stream visible to Android.</li>
+<li><strong>Files and media:</strong> accessed through Android's file picker and media storage for imports, exports, diagnostics, and recordings. Roam does not request broad file access.</li>
+</ul>
+<h2 id="website">This website</h2>
+<p>This site has no analytics script, advertising script, payment form, or site-set cookies. Its pages and assets are served from the same site. The hosting provider and network delivery services may keep standard server and security logs.</p>
+<p>Following an external link moves the request to that provider and its privacy terms.</p>
+<h2 id="changes">Changes and contact</h2>
+<p>This page will change when Roam's data flows change. The effective date above shows the latest review.</p>
+<p>For privacy questions, email <a href="mailto:feedback@roamlive.app">feedback@roamlive.app</a> before sharing sensitive diagnostics. Do not include credentials or private logs.</p>
+<div class="next-guide"><p>Need something else?</p><a href="/guides/">Choose another guide <span aria-hidden="true">→</span></a></div></article></div></main><footer class="site-footer"><div class="wrap footer-inner"><div class="footer-brand"><span class="live-dot" aria-hidden="true"></span><span>Roam Live · IRL streaming on Android</span></div><nav class="footer-links" aria-label="Footer navigation"><a href="/guides/">Guides</a><a href="/faq/">FAQs</a><a href="/support/">Support</a><a id="privacy-title" href="/privacy/">Privacy</a></nav></div></footer></body></html>

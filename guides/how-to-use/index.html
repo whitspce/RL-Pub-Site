@@ -1,118 +1,139 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Using Roam Live | App guide</title>
-    <meta name="description" content="A practical guide to Roam Live quality, audio, chat, overlays, recording, BRB, Stealth, and OBS controls.">
-    <meta name="theme-color" content="#0a0a0a">
-    <link rel="canonical" href="https://roamlive.app/guides/how-to-use/">
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-    <link rel="stylesheet" href="/style.css">
-  </head>
-  <body>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="site-header">
-      <a class="brand" href="/" aria-label="Roam Live home">
-        <img src="/assets/wordmark.png" width="659" height="228" alt="Roam Live">
-      </a>
-      <nav class="site-nav" aria-label="Main navigation">
-        <a href="/guides/" aria-current="page">Guides</a>
-        <a href="/support/">Support</a>
-      </nav>
-    </header>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111211"><title>Know your controls. | Roam Live</title><meta name="description" content="Learn the Roam Live buttons and settings: camera, microphone, quality, chat, overlays, BRB, Stealth, recording and OBS controls."><link rel="canonical" href="https://roamlive.app/guides/how-to-use/"><link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="stylesheet" href="/style.css"><meta property="og:type" content="website"><meta property="og:site_name" content="Roam Live"><meta property="og:title" content="Know your controls. | Roam Live"><meta property="og:description" content="Learn the Roam Live buttons and settings: camera, microphone, quality, chat, overlays, BRB, Stealth, recording and OBS controls."><meta property="og:url" content="https://roamlive.app/guides/how-to-use/"><meta property="og:image" content="https://roamlive.app/assets/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Roam Live. IRL streaming on Android."><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Roam Live","item":"https://roamlive.app/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://roamlive.app/guides/"},{"@type":"ListItem","position":3,"name":"Know your controls.","item":"https://roamlive.app/guides/how-to-use/"}]}</script><script src="/site.js" defer></script></head>
+<body><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><div class="wrap header-inner"><a class="brand" href="/" aria-label="Roam Live home"><img src="/assets/wordmark.png" width="659" height="230" alt="Roam Live"></a><nav class="site-nav" aria-label="Main navigation"><a href="/guides/" aria-current="page">Guides</a><a href="/faq/">FAQs</a><a href="/support/">Support</a><a class="nav-download" href="https://play.google.com/store/apps/details?id=dev.whitespc.roam">Get Roam <span aria-hidden="true">↗</span></a></nav></div></header><main id="main-content" class="wrap"><header class="page-head"><div class="breadcrumbs"><a href="/">Roam Live</a><span aria-hidden="true">/</span><a href="/guides/">Guides</a><span aria-hidden="true">/</span><span aria-current="page">App controls</span></div><p class="eyebrow">03 / App controls</p><h1>Know your controls.</h1><p class="lead">A practical reference for the camera screen and Settings. Button positions can change with your display size and toolbar choices.</p></header><div class="guide-layout"><aside class="page-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#first-stream">Before your first stream</a></li><li><a href="#main-controls">Main-screen controls</a></li><li><a href="#stream">Settings: Stream</a></li><li><a href="#quality">Settings: Video quality</a></li><li><a href="#audio">Settings: Audio</a></li><li><a href="#camera">Settings: Camera</a></li><li><a href="#overlays">Settings: Overlays</a></li><li><a href="#overlay-editor">Overlay editor controls</a></li><li><a href="#chat">Settings: Chat</a></li><li><a href="#break">Settings: BRB &amp; Stealth</a></li><li><a href="#reliability">Settings: Reliability</a></li><li><a href="#obs">Settings: OBS</a></li><li><a href="#customisation">Settings: Customisation</a></li><li><a href="#backup">Settings: Help &amp; about</a></li></ol><div class="toc-extra"><a href="/guides/">← All guides</a><a href="/support/">Still need a hand? →</a></div></aside><article class="prose"><p>The gear opens Settings. On the main screen, <strong>MIC</strong> opens microphone selection and gain, while the microphone icon mutes audio. <strong>LAYERS</strong> controls overlays included in your broadcast. The built-in chat panel is for you to read on the phone.</p>
 
-    <main id="main-content">
-      <header class="page-head">
-        <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/guides/">Guides</a> <span aria-hidden="true">/</span> <span aria-current="page">Using Roam</span></nav>
-        <p class="eyebrow">App reference</p>
-        <h1 class="page-title">Set up the phone for a real stream.</h1>
-        <p class="lede">Use the safe settings below for the first test, then change one thing at a time. A stable 720p stream is better than an unstable 1080p stream.</p>
-      </header>
+<h2 id="first-stream">Before your first stream</h2>
+<p>Set a destination in <strong>Settings &gt; Stream</strong>, choose a video quality preset and check your microphone. Return to the camera screen and hold <strong>HOLD TO GO LIVE</strong> to start. Tap the stop control to end the stream. For destination setup, follow the <a href="/guides/stream-to-platform/">direct streaming guide</a> or <a href="/guides/stream-to-obs/">OBS guide</a>.</p>
 
-      <article class="prose">
-        <h2 id="first-stream">Your first stream</h2>
-        <ol>
-          <li>Open <strong>Settings &gt; Stream</strong> and enter a complete RTMPS or encrypted SRT URL.</li>
-          <li>Start with <strong>Data saver</strong> and <strong>Auto bitrate</strong> on.</li>
-          <li>Set up the microphone and watch the audio level before going live.</li>
-          <li>Run a private or unlisted mobile-data test.</li>
-          <li>Hold the live button until its ring completes. Tap Stop when finished.</li>
-        </ol>
-        <p>The <a href="/guides/stream-to-platform/">direct streaming guide</a> explains destination setup and a safe first test.</p>
+<h2 id="main-controls">Main-screen controls</h2>
+<p>Some controls depend on your phone, settings or connection state. <strong>Settings &gt; Customisation</strong> changes which toolbar icons appear and their order.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable reference table"><table>
+    <thead><tr><th scope="col">Control</th><th scope="col">What it does</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Start / Stop</th><td>Hold to start sending video and audio to your saved destination. Tap Stop to end Roam's stream.</td></tr>
+      <tr><th scope="row">Stream status</th><td>Shows whether Roam is idle, connecting, live or reconnecting. This is separate from OBS's broadcast status.</td></tr>
+      <tr><th scope="row">MIC meter</th><td>Shows microphone activity. Tap it to choose a microphone and adjust input gain.</td></tr>
+      <tr><th scope="row">Microphone mute</th><td>Mutes or unmutes Roam's microphone audio. If OBS BRB protection is active, it stays protected until OBS confirms the break has ended.</td></tr>
+      <tr><th scope="row">Switch camera</th><td>Switches the main camera. With dual camera active, swaps the main and inset cameras.</td></tr>
+      <tr><th scope="row">Torch</th><td>Turns the camera light on or off when available.</td></tr>
+      <tr><th scope="row">Camera mute</th><td>Hides the camera picture, including the second-camera inset. Overlays remain visible. Use microphone mute separately if you also want silence.</td></tr>
+      <tr><th scope="row">Dual camera / PiP</th><td>Shows or hides a second-camera inset on supported phones. Enable Dual camera in Camera settings to make the control available. Running two cameras uses more power and generates more heat.</td></tr>
+      <tr><th scope="row">BRB</th><td>Shows your break message or image with audio muted. If connected to OBS with a BRB scene configured, switches to that scene instead. Optional OBS BRB protection also hides Roam's cameras and mutes its microphone.</td></tr>
+      <tr><th scope="row">Stealth</th><td>Blacks and dims the phone display while the stream continues. Hold anywhere on the screen for about two seconds to return.</td></tr>
+      <tr><th scope="row">LAYERS</th><td>Opens visibility controls for existing overlays. Choose which layers to show, then tap Apply. Cancel leaves them unchanged.</td></tr>
+      <tr><th scope="row">OBS / OBS LIVE</th><td>Opens OBS connection or broadcast controls. When connected, choose a scene, view the program preview, hold to start the OBS broadcast or tap to stop it. An OBS connection alone does not mean OBS is broadcasting.</td></tr>
+      <tr><th scope="row">Phone status</th><td>Opens available battery, temperature and other device details.</td></tr>
+      <tr><th scope="row">Network status</th><td>Opens connection and stream-health details.</td></tr>
+      <tr><th scope="row">REC</th><td>Indicates that a local recording is active.</td></tr>
+      <tr><th scope="row">More</th><td>Opens toolbar actions that do not fit in the Compact layout.</td></tr>
+      <tr><th scope="row">Settings</th><td>The gear opens the Settings categories below. It remains available when other toolbar icons are hidden or reordered.</td></tr>
+    </tbody>
+  </table></div>
+<p>Tap an uncovered part of the camera preview to focus. Pinch to zoom. The second-camera inset helps you check your framing; choose its corner in Camera settings.</p>
 
-        <h2 id="stream">Stream</h2>
-        <p>Enter the complete destination supplied by your streaming platform or service under <strong>Settings &gt; Stream</strong>. If you hold <strong>Go Live</strong> without a valid destination, Roam offers to open Stream settings.</p>
-        <p>Stream settings show the complete destination and let you keep a small set of saved destinations. These values contain secrets, are hidden by default, and are encrypted on the phone. You cannot change the active destination while live.</p>
-        <div class="callout warning">
-          <h3>Use encrypted transport</h3>
-          <p>Roam accepts RTMPS or encrypted SRT only. Treat the complete destination as a password.</p>
-        </div>
+<h2 id="stream">Settings: Stream</h2>
+<ul>
+  <li><strong>Stream URL:</strong> enter the full destination supplied by your streaming service or receiver. The help button explains the field.</li>
+  <li><strong>Save current URL:</strong> name the current destination for reuse. Tap a saved destination to select it, or its remove button to delete it.</li>
+</ul>
+<p>Stop streaming before changing the active destination.</p>
 
-        <h2 id="quality">Quality</h2>
-        <p>Roam offers 480p, 720p, and 1080p at 30 fps. Resolution locks while live. Bitrate can change during a stream.</p>
-        <ul>
-          <li><strong>Data saver, 480p at 30 fps:</strong> the safest first test and useful for weak signal, long runtime, or a hot phone.</li>
-          <li><strong>Recommended, 720p at 30 fps:</strong> the normal next step after the first test. It balances detail, data use, and phone workload.</li>
-          <li><strong>Sharp, 1080p at 30 fps:</strong> use only after field testing. It needs more upload, power, and cooling.</li>
-        </ul>
-        <p><strong>Auto bitrate</strong> lowers the encoder bitrate when the connection weakens, then raises it toward your selected maximum as conditions recover.</p>
+<h2 id="quality">Settings: Video quality</h2>
+<p>Choose a preset before going live. Higher quality needs more upload capacity and can use more power. <strong>Auto bitrate</strong> reduces the video target when the connection struggles and raises it again as the connection recovers.</p>
+<p>While live, <strong>Live output</strong> shows the current sent bitrate. This includes audio and transport overhead, so it can differ from the selected video target.</p>
 
-        <h2 id="audio">Audio</h2>
-        <p>Choose the microphone in <strong>Settings &gt; Audio</strong>. Wired and USB microphones usually give the best result. Bluetooth headsets use a phone-call voice mode and should be treated as a backup.</p>
-        <p>Enable the audio-level HUD control so you can catch silence and clipping before a stream. Adjust input gain carefully. A louder signal is not always a cleaner one.</p>
+<h2 id="audio">Settings: Audio</h2>
+<ul>
+  <li><strong>Microphone check:</strong> speak and watch the meter. Bluetooth microphone levels appear once you are live.</li>
+  <li><strong>Input gain:</strong> use the slider to adjust microphone level. Lower it if loud speech sounds distorted.</li>
+  <li><strong>Microphone:</strong> select <strong>Default (system choice)</strong> or an available device. After plugging in a microphone, leave this category and return to refresh the list. The help button explains microphone choices.</li>
+  <li><strong>Show audio levels HUD icon on home screen:</strong> shows or hides the main-screen MIC meter and its quick controls.</li>
+</ul>
 
-        <h2 id="camera">Camera</h2>
-        <p><strong>Image stabilization</strong> can smooth handheld footage, but it crops the frame and depends on phone support.</p>
-        <p><strong>Dual camera</strong> adds a front and rear camera view. It is demanding and can heat the phone quickly. Leave it off for long streams unless your phone has passed a thermal test.</p>
+<h2 id="camera">Settings: Camera</h2>
+<ul>
+  <li><strong>Image stabilization:</strong> smooths handheld movement on supported phones and slightly crops the picture.</li>
+  <li><strong>Dual camera:</strong> makes the main-screen dual-camera control available. This feature needs a supported phone and can increase heat substantially.</li>
+  <li><strong>Picture-in-picture:</strong> choose Small, Medium or Large, then one of four corner positions. <strong>Mirror front camera</strong> flips the front-camera inset; leave it off when viewers need to read text in that view.</li>
+</ul>
 
-        <h2 id="chat">Chat</h2>
-        <p>Roam can show public Twitch, Kick, and YouTube chat on the phone. Enter the public channel name or YouTube handle under <strong>Settings &gt; Chat</strong>.</p>
-        <p>The chat panel is for the streamer and is not drawn into the broadcast. YouTube chat uses an unofficial interface, so it may stop working when YouTube changes its site.</p>
+<h2 id="overlays">Settings: Overlays</h2>
+<p><strong>Overlay editor</strong> adds text, images and web pages to your broadcast. <strong>Main-screen Layers control</strong> shows or hides the LAYERS shortcut for changing saved layers' visibility.</p>
+<p>Use a web overlay to show viewer chat, alerts or another service's browser overlay. Web pages use additional battery. Their sound can play on your phone, but Roam does not mix it directly into the stream's audio. Your microphone can still pick up sound from the phone speaker.</p>
 
-        <h2 id="overlays">Overlays</h2>
-        <p>The overlay editor supports text, images, and web pages. Keep the first layout simple and check it at the same orientation and resolution you will stream.</p>
-        <ul>
-          <li><strong>Text:</strong> use fixed text or supported live tokens.</li>
-          <li><strong>Images:</strong> import only what you need. Roam stores the imported copy in its private app storage.</li>
-          <li><strong>Web:</strong> use an HTTPS page you trust. Its provider receives normal web requests and its code runs inside the overlay view.</li>
-        </ul>
-        <p>Location-backed tokens ask for location permission. If you place location details on an overlay, those details become part of the video viewers receive.</p>
+<h2 id="overlay-editor">Overlay editor controls</h2>
+<p>Open <strong>Settings &gt; Overlays &gt; Overlay editor</strong>. The preview shows your draft layout. Select a layer in <strong>Layers</strong> to open its <strong>Edit</strong> controls. On wider screens, both panels appear together.</p>
 
-        <h2 id="break">BRB &amp; Stealth</h2>
-        <p>The BRB button shows your full-screen BRB message or custom image to viewers and mutes broadcast audio. Configure it in <strong>Settings &gt; BRB &amp; Stealth</strong>.</p>
-        <p>Stealth keeps chat and controls out of sight when the rear camera faces you and the screen faces the public. It is available only while streaming. Tap Stealth to black out the display while the stream continues, then hold anywhere until Stealth exits. The darker display can also reduce screen power use and heat. The optional recording dot and haptic pulse help remind you that the phone is still live.</p>
-        <p>When OBS is paired and a BRB scene is selected, the same HUD control switches the OBS scene. Enable <strong>Mute mic and camera during OBS BRB</strong> if you want the phone source blocked too.</p>
+<h3>Add a layer</h3>
+<ul>
+  <li><strong>Text:</strong> adds a text layer. Enter your wording, then choose its size, colour and position.</li>
+  <li><strong>Image:</strong> opens the phone's image picker. Use an image for a logo, frame or other static graphic.</li>
+  <li><strong>Web:</strong> shows a power-use notice, then <strong>Add web overlay</strong> creates a web layer. Paste a complete HTTPS address into <strong>URL</strong>, or choose <strong>Import HTML or ZIP</strong> for a local overlay. Only import files you trust; they can run code and make internet requests.</li>
+</ul>
+<p>An imported web layer shows its filename. <strong>Use a web address instead</strong> returns to the URL field. Web layers fill the broadcast frame; arrange their content through the overlay service or HTML. The editor shows a web placeholder, so check the saved result on the main screen.</p>
 
-        <h2 id="reliability">Reliability and recording</h2>
-        <p><strong>Record to phone while streaming</strong> saves a copy under <strong>Movies/Roam</strong>. Recording continues while the network stream reconnects. Roam stops the recording, not the stream, if storage becomes too low.</p>
-        <p>Choose how long Roam should retry a dropped stream. A short limit is easier to reason about during testing. The Forever option is useful only when you understand how the platform and OBS behave after a long outage.</p>
-        <p>Under <strong>Settings &gt; Reliability</strong>, find <strong>Keep streams running</strong> and choose <strong>Open battery settings</strong>. Find Roam in Android's battery settings and allow it to keep working in the background. Phone vendors label this differently.</p>
-        <div class="callout warning">
-          <h3>Heat wins eventually</h3>
-          <p>Shade the phone, remove a thick case, avoid dual camera, and keep charging hardware out of direct sun. Roam can reduce load, but software cannot make an overheated phone safe.</p>
-        </div>
+<h3>Manage layers</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable reference table"><table>
+    <thead><tr><th scope="col">Control</th><th scope="col">What it does</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Layer name</th><td>Selects the layer for editing. The optional Name field helps you recognise it later.</td></tr>
+      <tr><th scope="row">Checkbox</th><td>Shows or hides the layer in your draft. Save to apply the change.</td></tr>
+      <tr><th scope="row">Up / Down arrows</th><td>Change the stacking order. A layer higher in the list appears in front of lower layers.</td></tr>
+      <tr><th scope="row">Delete overlay</th><td>Removes the selected layer from the draft. Save to apply its removal.</td></tr>
+    </tbody>
+  </table></div>
+<p>The built-in Roam watermark is protected from deletion. You can still hide it, rename it, reposition it and change its stacking order.</p>
 
-        <h2 id="obs">OBS</h2>
-        <p>Roam can send video and audio to OBS over encrypted SRT, then use OBS WebSocket for remote scene and broadcast controls. These are separate connections.</p>
-        <p>Follow the tested <a href="/guides/stream-to-obs/">phone-to-home-OBS guide</a>. Do not forward UDP 1234 or TCP 4455 on your router.</p>
+<h3>Size, position and live text</h3>
+<ul>
+  <li><strong>Text size</strong> changes text from 12 to 144. <strong>Colour</strong> offers eight preset text colours.</li>
+  <li>For images, <strong>Size</strong> changes width from 5% to 150% of the frame while keeping the image's proportions. Values above 100% let a graphic extend beyond the frame.</li>
+  <li><strong>Position</strong> offers nine shortcuts: TL, T and TR for the top; L, C and R for the middle; BL, B and BR for the bottom. <strong>X</strong> moves horizontally and <strong>Y</strong> vertically. Text and image layers can be fine-tuned with these sliders; the watermark uses the nine preset positions.</li>
+  <li><strong>Insert live value</strong> adds a token at the text cursor: Time, Date, Day, Battery, Bitrate, Stream time or Compass. You can combine tokens with ordinary text. An unavailable value appears as a dash.</li>
+</ul>
+<p>Additional location tokens can be typed into Text: <code>{speed}</code> for km/h, <code>{speed_mph}</code>, <code>{altitude}</code>, <code>{lat}</code>, <code>{lng}</code>, <code>{heading}</code> or <code>{city}</code>. These need location permission and use more battery while active. Coordinates and city names reveal your location in the broadcast.</p>
 
-        <h2 id="backup">Backups, updates, and diagnostics</h2>
-        <p><strong>Help &amp; about</strong> lets you export a password-protected backup, import it on another phone, check for updates, and save diagnostics. The in-app update check is only needed for APK installs. Google Play handles updates for Play Store installs.</p>
-        <p>A complete backup includes settings, overlays, stream URLs or keys, SRT passphrases, and the OBS password. Keep the backup file private and delete it when you no longer need it. Roam cannot recover a forgotten backup password.</p>
-        <p>Diagnostics include device details, configured chat channel names, and engine events. They are designed to redact stream URLs and passwords. Review the file before sharing it and send it only through a private support channel.</p>
+<h3>Save or leave</h3>
+<p><strong>Save</strong> applies your draft, including to a running stream, and keeps the editor open. The button briefly reads <strong>Saved</strong>. The back arrow closes the editor. If changes remain, choose <strong>Save</strong> to apply them and close, <strong>Discard</strong> to leave without those changes, or <strong>Keep editing</strong> to return to the draft.</p>
 
-        <p>Need help? Go to <a href="/support/">Support</a>.</p>
-      </article>
-    </main>
+<h2 id="chat">Settings: Chat</h2>
+<p><strong>Show chat panel</strong> puts messages on your phone for you to read. Choose <strong>Text size</strong>, <strong>Panel width</strong> and <strong>Panel side</strong>, then enter a <strong>Kick channel name</strong>, <strong>Twitch channel name</strong> or <strong>YouTube channel handle</strong>.</p>
+<p>These fields select channels; they do not log you into an account. YouTube chat needs an active live broadcast and relies on an unofficial interface, so service changes can affect it. To put chat in the video your viewers receive, add a web overlay instead.</p>
 
-    <footer class="site-footer">
-      <span>Roam Live</span>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="/guides/">Guides</a>
-        <a href="/support/">Support</a>
-        <a href="/privacy/">Privacy</a>
-      </nav>
-    </footer>
-  </body>
-</html>
+<h2 id="break">Settings: BRB &amp; Stealth</h2>
+<ul>
+  <li><strong>BRB message:</strong> choose the text shown during a local break. <strong>Choose image from phone</strong> replaces that message with your own picture; <strong>Clear</strong> returns to the message.</li>
+  <li><strong>Recording dot:</strong> adds a red reminder that you are live while Stealth is active. This is separate from the REC indicator for saving a local recording.</li>
+  <li><strong>Haptic pulse:</strong> makes the phone vibrate while in Stealth. Choose a <strong>Pulse interval</strong> of 30 or 60 seconds.</li>
+</ul>
+
+<h2 id="reliability">Settings: Reliability</h2>
+<ul>
+  <li><strong>Record to phone while streaming:</strong> saves a copy to Movies/Roam. It uses extra storage and power. The help button explains local recording.</li>
+  <li><strong>Keep trying for:</strong> choose how long Roam attempts to reconnect after a dropout: 1 minute, 5 minutes, 15 minutes or Forever.</li>
+  <li><strong>Open battery settings:</strong> opens Android's settings for allowing Roam to keep running in the background.</li>
+</ul>
+
+<h2 id="obs">Settings: OBS</h2>
+<p>These settings connect Roam to OBS's controls. Set Roam's video destination separately under Stream. See the <a href="/guides/stream-to-obs/">OBS setup guide</a> for the complete connection.</p>
+<ul>
+  <li><strong>Show OBS control on main screen:</strong> shows or hides the OBS shortcut. Hiding it does not disconnect OBS or turn off streaming sync.</li>
+  <li><strong>Host (LAN IP or hostname)</strong>, <strong>Port</strong> and <strong>Password (required):</strong> enter your OBS WebSocket details, then use Connect or Disconnect.</li>
+  <li><strong>Sync OBS streaming with Roam:</strong> starts an OBS broadcast when Roam starts. When Roam stops, it only stops an OBS broadcast that it started.</li>
+  <li><strong>BRB scene in OBS:</strong> chooses the OBS scene controlled by Roam's BRB button. Leave it blank to use Roam's local break screen.</li>
+  <li><strong>Mute mic and camera during OBS BRB:</strong> also protects the phone's microphone and cameras during the OBS break. Protection stays active until OBS confirms the break has ended.</li>
+</ul>
+
+<h2 id="customisation">Settings: Customisation</h2>
+<p><strong>Wrap</strong> puts toolbar controls on extra rows when needed. <strong>Compact</strong> puts excess controls under More. Under <strong>Main screen icons</strong>, show or hide supported icons, move them up or down in the order, and open their related settings. <strong>Reset to default</strong> restores the toolbar layout.</p>
+<p>The Settings gear is always last. Dual-camera availability is controlled in Camera settings.</p>
+
+<h2 id="backup">Settings: Help &amp; about</h2>
+<ul>
+  <li><strong>Diagnostics:</strong> save or send a log soon after a problem so it includes useful recent information.</li>
+  <li><strong>Export backup:</strong> creates a password-protected backup of your settings, overlays and saved connections. Keep the password so you can restore it.</li>
+  <li><strong>Import backup:</strong> replaces this phone's Roam setup with a saved backup. Stop streaming before exporting or importing.</li>
+  <li><strong>Check for updates automatically</strong> and <strong>Check now:</strong> check for updates to APK installations. Google Play manages updates for Play installations.</li>
+  <li><strong>Help and feedback</strong>, <strong>Privacy policy</strong> and <strong>Third-party licenses:</strong> open the relevant information.</li>
+</ul>
+<div class="next-guide"><p>Need something else?</p><a href="/guides/">Choose another guide <span aria-hidden="true">→</span></a></div></article></div></main><footer class="site-footer"><div class="wrap footer-inner"><div class="footer-brand"><span class="live-dot" aria-hidden="true"></span><span>Roam Live · IRL streaming on Android</span></div><nav class="footer-links" aria-label="Footer navigation"><a href="/guides/">Guides</a><a href="/faq/">FAQs</a><a href="/support/">Support</a><a id="privacy-title" href="/privacy/">Privacy</a></nav></div></footer></body></html>

@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111211"><title>A question before you go live? | Roam Live</title><meta name="description" content="Answers to common Roam Live questions. Add chat to your stream, fix destination URLs, understand web-overlay audio and troubleshoot Android IRL streaming."><link rel="canonical" href="https://roamlive.app/faq/"><link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="stylesheet" href="/style.css"><meta property="og:type" content="website"><meta property="og:site_name" content="Roam Live"><meta property="og:title" content="A question before you go live? | Roam Live"><meta property="og:description" content="Answers to common Roam Live questions. Add chat to your stream, fix destination URLs, understand web-overlay audio and troubleshoot Android IRL streaming."><meta property="og:url" content="https://roamlive.app/faq/"><meta property="og:image" content="https://roamlive.app/assets/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Roam Live. IRL streaming on Android."><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Roam Live","item":"https://roamlive.app/"},{"@type":"ListItem","position":2,"name":"A question before you go live?","item":"https://roamlive.app/faq/"}]}</script><script src="/site.js" defer></script></head>
+<body><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><div class="wrap header-inner"><a class="brand" href="/" aria-label="Roam Live home"><img src="/assets/wordmark.png" width="659" height="230" alt="Roam Live"></a><nav class="site-nav" aria-label="Main navigation"><a href="/guides/">Guides</a><a href="/faq/" aria-current="page">FAQs</a><a href="/support/">Support</a><a class="nav-download" href="https://play.google.com/store/apps/details?id=dev.whitespc.roam">Get Roam <span aria-hidden="true">↗</span></a></nav></div></header><main id="main-content" class="wrap"><header class="page-head"><div class="breadcrumbs"><a href="/">Roam Live</a><span aria-hidden="true">/</span><span aria-current="page">Frequently asked questions</span></div><p class="eyebrow">04 / Frequently asked questions</p><h1>A question before<br>you go live?</h1><p class="lead">Chat in your video, stream keys, sound, heat and home OBS. Find an answer here, with links to the full setup guides.</p></header><div class="guide-layout"><aside class="page-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#starting">Starting and destinations</a></li><li><a href="#chat-and-overlays">Chat and overlays</a></li><li><a href="#picture-and-sound">Picture, sound and heat</a></li><li><a href="#recording-and-reliability">Recording and reliability</a></li><li><a href="#obs">Using OBS</a></li><li><a href="#settings-and-updates">Settings and updates</a></li></ol><div class="toc-extra"><a href="/guides/">← All guides</a><a href="/support/">Still need a hand? →</a></div></aside><article class="prose"><div class="faq-search" hidden><label for="faq-search">Find an answer</label><input id="faq-search" data-faq-search type="search" placeholder="Try chat, stream key, audio or OBS" autocomplete="off" aria-controls="faq-answers"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg></div><p class="faq-count" data-faq-count aria-live="polite">25 practical answers</p><div id="faq-answers"><section class="faq-group" aria-labelledby="starting">
+  <h2 id="starting">Starting and destinations</h2>
+  <details class="faq-item" id="complete-url">
+    <summary>What goes in Stream URL? Is my stream key enough?</summary>
+    <div class="faq-answer">
+      <p>Enter the complete streaming destination. A key alone has no server for Roam to contact. If your service gives you an RTMP or RTMPS server and key separately, join them with one slash at the boundary. For example, <code>rtmps://ingest.example.com/app</code> plus <code>YOUR_STREAM_KEY</code> becomes <code>rtmps://ingest.example.com/app/YOUR_STREAM_KEY</code>.</p>
+      <p>That address is an illustration. Use your own server and key. If you already have a combined URL, paste it unchanged without adding another key. See the <a href="/guides/stream-to-platform/#url">full URL examples</a>.</p>
+    </div>
+  </details>
+  <details class="faq-item" id="cannot-connect">
+    <summary>Why does Roam stay on Connecting?</summary>
+    <div class="faq-answer">
+      <p>An accepted URL only means its format can be used. It does not prove that the server is reachable or that the key is correct. Check ordinary internet access, compare the full destination with the platform dashboard, and make sure the receiving input or scheduled broadcast is ready.</p>
+      <p>If you send through a relay or home computer, check that receiver too. Keep a working key unless it is invalid or exposed; a temporary connection failure does not by itself require a new one. <a href="/guides/stream-to-platform/#troubleshooting">Connection checks</a></p>
+    </div>
+  </details>
+  <details class="faq-item" id="encrypted-destination">
+    <summary>Do I have to use RTMPS or encrypted SRT?</summary>
+    <div class="faq-answer">
+      <p>Roam accepts compatible RTMP, RTMPS and SRT destinations, including SRT without a passphrase. Use the address your service supplies. RTMPS encrypts the connection. Passphrase-protected SRT encrypts video and audio.</p>
+      <p>Do not add an <code>s</code> or invent a passphrase for a server that has not been configured for it. For YouTube RTMPS, copy the full address from Live Control Room because the hostname also changes. <a href="https://support.google.com/youtube/answer/10364924?hl=en">YouTube RTMPS instructions</a></p>
+    </div>
+  </details>
+  <details class="faq-item" id="start-and-stop">
+    <summary>How do I start, stop or change where the stream goes?</summary>
+    <div class="faq-answer">
+      <p>Hold the Go Live control on Main to start. Tap Stop to end Roam's stream, including while it is connecting or reconnecting. Check the platform or relay's broadcast status afterwards, since it may keep its output running.</p>
+      <p>Stop before changing the active destination. In <strong>Settings &gt; Stream</strong>, use <strong>Save current URL</strong> to keep a named destination you can select later.</p>
+    </div>
+  </details>
+  <details class="faq-item" id="platform-login">
+    <summary>Can I sign in to Twitch, change my title or see viewer count in Roam?</summary>
+    <div class="faq-answer">
+      <p>Roam uses a Stream URL and does not include platform login, title editing or viewer counts. Set your title and category in the platform's dashboard and use its stream manager for audience information.</p>
+      <p>The channel fields in <strong>Settings &gt; Chat</strong> choose which public chat to read. They do not sign you into that account. You do not need a separate Roam account to stream.</p>
+    </div>
+  </details>
+  <details class="faq-item" id="multiple-platforms">
+    <summary>Can I stream to several platforms at once?</summary>
+    <div class="faq-answer">
+      <p>Yes. Send Roam's feed to a restreaming service or to OBS at home, then distribute it to your platforms from there.</p>
+      <p><strong>Roam deliberately sends to one destination.</strong> We believe restreaming belongs off the phone. Uploading the same feed to several places multiplies the mobile bandwidth it needs. Keeping one upload leaves more room on your connection and keeps the extra distribution work off your phone.</p>
+      <p>For example, sending a 4 Mbps feed to three destinations separately needs about 12 Mbps of upload, before network overhead. Sending it once to a service that distributes it still needs about 4 Mbps from the phone.</p>
+
+      <h3>Use a restreaming service</h3>
+      <p>This is the simplest route if you do not need a home computer for scenes or overlays. Connect your platform accounts to the service, then use its incoming stream address in Roam.</p>
+      <ul>
+        <li><strong>Restream:</strong> a good starting point for two channels. Its free plan accepts streaming software such as Roam over RTMP or RTMPS and sends to two supported channels at once. Three or more channels, Facebook Pages and Groups, and custom RTMP output destinations need a paid plan. Free streams can include Restream branding in platform descriptions. <a href="https://support.restream.io/en/articles/9127747-can-i-use-restream-for-free-yes">Free-plan details</a></li>
+        <li><strong>Livepush:</strong> its free-plan guide lists three destinations and 20 streaming hours per month, with one channel per platform type. Twitch and YouTube are supported on the free plan; Kick, Facebook and custom RTMP outputs need a paid plan. <a href="https://docs.livepush.io/en/articles/6082793-how-long-can-i-stream-with-the-free-plan">Free allowance</a> and <a href="https://livepush.io/pricing/">current platform limits</a>.</li>
+        <li><strong>Streamrun:</strong> another option if you use its IRL streaming service. It is a paid service with a trial, rather than an ongoing free plan. <a href="https://streamrun.com/pricing">Plans</a> and <a href="https://streamrun.com/docs/output-destinations">output setup</a>.</li>
+      </ul>
+      <p class="small">Plan details checked September 2026. Check the linked limits for the platforms you want before setting up.</p>
+
+      <h3>Example: Roam to Restream</h3>
+      <ol>
+        <li>In Restream, add your platform accounts under <strong>Channels</strong>.</li>
+        <li>Choose <strong>New Stream &gt; Encoder | RTMP</strong> and enable the channels you want to broadcast to, within your plan's limit.</li>
+        <li>Copy the server URL and stream key. Join them with one slash and paste the complete address into <strong>Roam Settings &gt; Stream &gt; Stream URL</strong>. The <a href="/guides/stream-to-platform/#url">URL example</a> shows how.</li>
+        <li>When you are ready to broadcast, hold <strong>Go Live</strong> in Roam. Check that each platform is receiving picture and sound. When finished, stop Roam and confirm every platform has ended its broadcast.</li>
+      </ol>
+      <p>Use Restream's <a href="https://support.restream.io/en/articles/6505602-go-live-with-streaming-software">streaming-software instructions</a> for this route. You can also choose <a href="https://support.restream.io/en/articles/8523770-encrypt-your-stream-with-rtmps">RTMPS on the free plan</a>.</p>
+
+      <h3>Use OBS at home</h3>
+      <p>Follow the <a href="/guides/stream-to-obs/">home OBS guide</a>, then choose a restreaming service as OBS's destination or use the free <strong>Multiple RTMP outputs</strong> plugin. The plugin sends a separate upload from your computer to each platform, so your home connection needs enough upload capacity for all of them.</p>
+      <p>The phone still sends one feed to OBS. See <a href="/guides/stream-to-obs/#multistream">the OBS multistreaming steps</a>, including how to set up the plugin's start and stop sync for Roam's remote controls.</p>
+    </div>
+  </details>
+  <details class="faq-item" id="exposed-key">
+    <summary>My stream key appeared in a screenshot. What should I do?</summary>
+    <div class="faq-answer">
+      <p>Reset the exposed key through your platform, then replace it in Roam's active and saved destinations and any other app or relay that uses it. If a private SRT URL was exposed, replace the affected credentials through the issuing service.</p>
+      <p>Keep the complete destination out of screenshots and public support posts. Kick's help explains its reset control and the need to update streaming software afterwards. <a href="https://help.kick.com/en/articles/7066931-how-to-stream-on-kick-com">Kick stream-key help</a></p>
+    </div>
+  </details>
+</section>
+
+<section class="faq-group" aria-labelledby="chat-and-overlays">
+  <h2 id="chat-and-overlays">Chat and overlays</h2>
+  <details class="faq-item" id="phone-chat">
+    <summary>Does the chat I see on my phone appear in the broadcast?</summary>
+    <div class="faq-answer">
+      <p>The panel under <strong>Settings &gt; Chat</strong> is for you on the phone. It is not included in the outgoing video. Enter a public Twitch or Kick channel name, or a YouTube channel handle, then enable <strong>Show chat panel</strong>.</p>
+      <p>You can change its text size, width and side. To show chat inside the video viewers receive, use a web overlay such as the <a href="#chat-on-stream">StreamElements example below</a>.</p>
+    </div>
+  </details>
+  <details class="faq-item" id="chat-on-stream">
+    <summary>How do I put Twitch chat into the video?</summary>
+    <div class="faq-answer">
+      <p>You can use any site or program that creates a web overlay Roam can load. This walkthrough uses StreamElements, where you can arrange the chat on a full video canvas before adding it to Roam.</p>
+      <ol>
+        <li>Open StreamElements for your Twitch channel and create a new overlay with a <strong>1920 × 1080</strong> canvas.</li>
+        <li>Add <strong>Stream Tools &gt; Your Stream's Chat</strong>. Resize and position the chat box to suit your layout. Use StreamElements' settings to choose the font, text size, colours and other details you prefer.</li>
+        <li>Save the overlay and copy its overlay URL using the link button. <a href="https://support.streamelements.com/hc/en-us/articles/18771535988370-Adding-a-Twitch-Chat-Overlay-to-your-Stream">StreamElements chat-widget instructions</a></li>
+        <li>In Roam, open <strong>Settings &gt; Overlays &gt; Overlay editor</strong>, choose <strong>Web &gt; Add web overlay</strong>, and paste the HTTPS overlay URL into <strong>URL</strong>.</li>
+        <li>Keep the layer visible, press <strong>Save</strong>, and return to Main. Send a test chat message and check that it appears in the received video.</li>
+      </ol>
+      <p>Roam's editor shows a placeholder for web overlays, not the live webpage. Arrange the widget within StreamElements: Roam displays its page across the full video frame. Test the actual widget before relying on it during a broadcast.</p>
+      <p>Web overlays use more phone resources than text or image layers. If you already produce your stream in OBS, you can add the overlay there as a Browser source instead. <a href="https://support.streamelements.com/hc/en-us/articles/10474479981074-Adding-Overlays-to-OBS-Studio">StreamElements in OBS</a></p>
+      <p>Keep the overlay URL private; it can contain an access token. <a href="https://support.streamelements.com/hc/en-us/articles/10474584767762-Getting-Started-with-SE-Live">StreamElements overlay privacy note</a></p>
+    </div>
+  </details>
+  <details class="faq-item" id="alert-audio">
+    <summary>Will viewers hear sound from a web overlay or alert?</summary>
+    <div class="faq-answer">
+      <p>Roam does not directly mix webpage sound into its outgoing audio. A web overlay may play sound on the phone, and the microphone may pick up the speaker, but that is not a reliable alert-audio setup.</p>
+      <p>Check received audio rather than assuming sound you hear on the phone is included. If OBS produces your final broadcast, add and configure the alert's audio there.</p>
+    </div>
+  </details>
+  <details class="faq-item" id="chat-missing">
+    <summary>Why is the chat panel empty or missing messages?</summary>
+    <div class="faq-answer">
+      <p>Check that <strong>Show chat panel</strong> is enabled and that the channel name or YouTube handle is correct. Confirm there are new messages in that channel and that the phone has internet access. YouTube needs an active live chat.</p>
+      <p>Roam reads external chat services, so outages and service changes can affect messages independently of the camera stream. YouTube chat uses an unofficial interface and may stop working when YouTube changes its site. A working phone chat panel also does not prove a separate StreamElements overlay is connected.</p>
+    </div>
+  </details>
+</section>
+
+<section class="faq-group" aria-labelledby="picture-and-sound">
+  <h2 id="picture-and-sound">Picture, sound and heat</h2>
+  <details class="faq-item" id="quality">
+    <summary>Which video quality should I choose?</summary>
+    <div class="faq-answer">
+      <p><strong>Recommended</strong> is Roam's default: 720p at 30 fps with a 2,500 kbps video target. <strong>Data saver</strong> uses 480p at 1,200 kbps. <strong>Sharp</strong> uses 1080p at 4,500 kbps. All three run at 30 fps.</p>
+      <p>Use a quality your connection and receiving service can sustain. Auto bitrate can lower the video target when the connection weakens and raise it again as it recovers. Heat protection can also lower bitrate. Stop the stream before changing the quality preset.</p>
+    </div>
+  </details>
+  <details class="faq-item" id="phone-hot">
+    <summary>Why is my phone hot, or why did an extra camera turn off?</summary>
+    <div class="faq-answer">
+      <p>Capturing, encoding and uploading video uses power. Dual camera, web overlays, a bright screen and charging can add to the load. Shade the phone and reduce optional work if it gets hot.</p>
+      <p>Roam responds to Android's thermal status. It can lower bitrate, turn off PiP or torch, pause web overlays, and stop the stream at critical heat levels. A thermal warning can therefore explain a feature turning off. Let the phone cool before trying to restore it. The status is Android's heat assessment, not an exact temperature reading.</p>
+    </div>
+  </details>
+  <details class="faq-item" id="dual-camera">
+    <summary>Can I use front and rear cameras together?</summary>
+    <div class="faq-answer">
+      <p>On supported phones, enable <strong>Dual camera</strong> in <strong>Settings &gt; Camera</strong>, then use its Main control. You can choose the PiP size and corner and mirror the front-camera inset.</p>
+      <p>Concurrent camera support depends on the phone. It also adds heat and battery use, so test the phone under the conditions you plan to stream in. Thermal protection may turn the second camera off.</p>
+    </div>
+  </details>
+  <details class="faq-item" id="microphone">
+    <summary>Can I use a wired, USB or Bluetooth microphone?</summary>
+    <div class="faq-answer">
+      <p>Connect the microphone, open <strong>Settings &gt; Audio</strong> and select the available input. If it is missing, leave this category and return to refresh the list. Watch its meter and listen to a received test. The Main MIC control also gives access to microphone selection and input gain when enabled.</p>
+      <p>Bluetooth microphones use a phone-call voice mode and may sound different from wired or USB inputs. Select and test a Bluetooth microphone before starting; switching routes during a stream may need a restart. Raise input gain cautiously: louder audio can clip.</p>
+    </div>
+  </details>
+  <details class="faq-item" id="brb-stealth">
+    <summary>What is the difference between BRB and Stealth?</summary>
+    <div class="faq-answer">
+      <p><strong>BRB</strong> changes what viewers receive. The phone-side BRB screen shows your message or image with audio muted. When a connected OBS BRB scene is configured, the control switches that scene instead; <strong>Mute mic and camera during OBS BRB</strong> controls protection of the phone feed.</p>
+      <p><strong>Stealth</strong> dims and blacks out your phone display while streaming continues. It keeps phone chat and controls out of sight when the display faces other people. Hold the screen for about two seconds to return. It does not hide overlays already included in the broadcast.</p>
+    </div>
+  </details>
+</section>
+
+<section class="faq-group" aria-labelledby="recording-and-reliability">
+  <h2 id="recording-and-reliability">Recording and reliability</h2>
+  <details class="faq-item" id="background-streaming">
+    <summary>Can I leave Roam or turn the screen off while streaming?</summary>
+    <div class="faq-answer">
+      <p>Roam uses a foreground streaming service to keep an active stream running when you go to another app or turn the screen off. Its notification provides a way to stop.</p>
+      <p>Android and phone-vendor battery restrictions can still interrupt background work. In <strong>Settings &gt; Reliability &gt; Keep streams running</strong>, open the battery settings and allow Roam to work in the background. Test this on your own phone before a long stream.</p>
+    </div>
+  </details>
+  <details class="faq-item" id="reconnecting">
+    <summary>What happens when mobile data drops out?</summary>
+    <div class="faq-answer">
+      <p>Roam retries a dropped stream for the period selected under <strong>Settings &gt; Reliability</strong>: 1, 5 or 15 minutes, or Forever. Auto bitrate can help when a connection weakens, but it cannot send video with no usable connection.</p>
+      <p>The platform or relay decides what viewers see during the gap and whether its broadcast stays open. Local recording can continue while Roam reconnects. Tap Stop if you want to end the attempt rather than keep retrying.</p>
+    </div>
+  </details>
+  <details class="faq-item" id="local-recording">
+    <summary>Can I keep a recording on the phone?</summary>
+    <div class="faq-answer">
+      <p>Enable <strong>Settings &gt; Reliability &gt; Record to phone while streaming</strong>. Roam records a local copy while streaming and publishes the completed file to <strong>Movies/Roam</strong> after recording stops. The recording continues during network reconnection attempts.</p>
+      <p>Recording needs at least 2 GB free to start and stops if free space falls below 500 MB. This stops the recording, not the network stream. Recording uses additional storage and power.</p>
+    </div>
+  </details>
+  <details class="faq-item" id="recording-missing">
+    <summary>I stopped recording. Where is the file?</summary>
+    <div class="faq-answer">
+      <p>Look in <strong>Movies/Roam</strong> using your phone's Files or gallery app. Roam copies the finished recording there after it stops, so a long recording may take time to appear.</p>
+      <p>If it remains missing, check available storage and open Roam again so pending recordings can be retried. Keep Roam's app data while seeking help, since an unpublished recording may still be stored with the app. A failed publication does not guarantee that the file is recoverable. <a href="/support/">Get recording help</a></p>
+    </div>
+  </details>
+</section>
+
+<section class="faq-group" aria-labelledby="obs">
+  <h2 id="obs">Using OBS</h2>
+  <details class="faq-item" id="obs-connections">
+    <summary>Why do OBS video and OBS remote controls have separate settings?</summary>
+    <div class="faq-answer">
+      <p>The <strong>Stream URL</strong> sends the phone's video and audio to an OBS receiver. <strong>Settings &gt; OBS</strong> connects to OBS WebSocket for scene changes and broadcast controls. They are two separate connections.</p>
+      <p>A connected OBS control does not prove the phone's video has arrived, and received video does not prove remote control is connected. Check both using the <a href="/guides/stream-to-obs/">phone-to-OBS guide</a>.</p>
+    </div>
+  </details>
+  <details class="faq-item" id="obs-sync">
+    <summary>Does starting Roam also start OBS broadcasting?</summary>
+    <div class="faq-answer">
+      <p>Only if you enable <strong>Sync OBS streaming with Roam</strong> and OBS is connected and configured. With sync off, Roam sends its feed while you control OBS broadcasting separately.</p>
+      <p>With sync enabled, Roam only stops an OBS broadcast it started. Do not assume stopping the phone ends a broadcast that was already running in OBS. For a receive-only test, leave sync off and confirm OBS's own output remains stopped.</p>
+    </div>
+  </details>
+  <details class="faq-item" id="hide-obs-control">
+    <summary>Does hiding the OBS button disconnect OBS?</summary>
+    <div class="faq-answer">
+      <p>No. <strong>Show OBS control on main screen</strong> changes the visibility of the Main control. It does not disconnect OBS or disable the configured connection behavior.</p>
+      <p>Use Disconnect in OBS settings to disconnect the remote-control session. Manage the phone's stream and OBS's own broadcast separately.</p>
+    </div>
+  </details>
+</section>
+
+<section class="faq-group" aria-labelledby="settings-and-updates">
+  <h2 id="settings-and-updates">Settings and updates</h2>
+  <details class="faq-item" id="backup">
+    <summary>How do I move my setup to another phone?</summary>
+    <div class="faq-answer">
+      <p>Stop streaming, open <strong>Settings &gt; Help &amp; about</strong>, and export a password-protected backup. Transfer it privately, then import it through Help &amp; about on the other phone. Import replaces that phone's Roam setup.</p>
+      <p>A complete backup includes settings, overlays and connection credentials. Keep the backup and its password private. Roam cannot recover a forgotten backup password. Recheck camera and microphone choices on the new phone because its hardware may differ.</p>
+    </div>
+  </details>
+  <details class="faq-item" id="updates">
+    <summary>Should I update through Google Play or Roam's update check?</summary>
+    <div class="faq-answer">
+      <p>Google Play manages updates for Play installations. Roam's in-app update check is for installations made from an APK.</p>
+      <p>Use the same installation source for updates. A differently signed APK cannot update a Play installation in place. Check the version in <strong>Settings &gt; Help &amp; about</strong> when comparing instructions or reporting a problem.</p>
+    </div>
+  </details>
+</section>
+</div><div class="empty-state" data-faq-empty hidden><p>No matching answers yet. Try a shorter word, or <a href="/support/">get in touch</a>.</p></div><div class="next-guide"><p>Need something else?</p><a href="/guides/">Choose another guide <span aria-hidden="true">→</span></a></div></article></div></main><footer class="site-footer"><div class="wrap footer-inner"><div class="footer-brand"><span class="live-dot" aria-hidden="true"></span><span>Roam Live · IRL streaming on Android</span></div><nav class="footer-links" aria-label="Footer navigation"><a href="/guides/">Guides</a><a href="/faq/">FAQs</a><a href="/support/">Support</a><a id="privacy-title" href="/privacy/">Privacy</a></nav></div></footer></body></html>

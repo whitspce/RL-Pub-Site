@@ -1,81 +1,122 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Stream from your phone | Roam Live</title>
-    <meta name="description" content="Enter an RTMPS or encrypted SRT destination and stream directly from Roam Live.">
-    <meta name="theme-color" content="#0a0a0a">
-    <link rel="canonical" href="https://roamlive.app/guides/stream-to-platform/">
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-    <link rel="stylesheet" href="/style.css">
-  </head>
-  <body>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="site-header">
-      <a class="brand" href="/" aria-label="Roam Live home">
-        <img src="/assets/wordmark.png" width="659" height="228" alt="Roam Live">
-      </a>
-      <nav class="site-nav" aria-label="Main navigation">
-        <a href="/guides/" aria-current="page">Guides</a>
-        <a href="/support/">Support</a>
-      </nav>
-    </header>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111211"><title>Go live from your phone | Roam Live</title><meta name="description" content="Go live from Roam Live on Android. Learn how to combine a server URL and stream key, with Twitch, YouTube, Kick and SRT destination examples."><link rel="canonical" href="https://roamlive.app/guides/stream-to-platform/"><link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="stylesheet" href="/style.css"><meta property="og:type" content="website"><meta property="og:site_name" content="Roam Live"><meta property="og:title" content="Go live from your phone | Roam Live"><meta property="og:description" content="Go live from Roam Live on Android. Learn how to combine a server URL and stream key, with Twitch, YouTube, Kick and SRT destination examples."><meta property="og:url" content="https://roamlive.app/guides/stream-to-platform/"><meta property="og:image" content="https://roamlive.app/assets/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Roam Live. IRL streaming on Android."><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Roam Live","item":"https://roamlive.app/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://roamlive.app/guides/"},{"@type":"ListItem","position":3,"name":"Go live from your phone","item":"https://roamlive.app/guides/stream-to-platform/"}]}</script><script src="/site.js" defer></script></head>
+<body><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><div class="wrap header-inner"><a class="brand" href="/" aria-label="Roam Live home"><img src="/assets/wordmark.png" width="659" height="230" alt="Roam Live"></a><nav class="site-nav" aria-label="Main navigation"><a href="/guides/" aria-current="page">Guides</a><a href="/faq/">FAQs</a><a href="/support/">Support</a><a class="nav-download" href="https://play.google.com/store/apps/details?id=dev.whitespc.roam">Get Roam <span aria-hidden="true">↗</span></a></nav></div></header><main id="main-content" class="wrap"><header class="page-head"><div class="breadcrumbs"><a href="/">Roam Live</a><span aria-hidden="true">/</span><a href="/guides/">Guides</a><span aria-hidden="true">/</span><span aria-current="page">Quick start</span></div><p class="eyebrow">01 / Quick start</p><h1>Go live from your phone</h1><p class="lead">Follow these four steps to stream from Roam Live to one destination.</p></header><div class="guide-layout"><aside class="page-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#quick-start">1. Get your stream address</a></li><li><a href="#enter-url">2. Enter it in Roam</a></li><li><a href="#go-live">3. Hold Go Live</a></li><li><a href="#confirm-live">4. Confirm you are live</a></li><li><a href="#testing">Test before a public broadcast</a></li><li><a href="#troubleshooting">If it does not connect</a></li></ol><div class="toc-extra"><a href="/guides/">← All guides</a><a href="/support/">Still need a hand? →</a></div></aside><article class="prose"><span id="roam"></span>
+<h2 id="quick-start">1. Get your stream address</h2>
+<p>Your stream address tells Roam where to send your video and audio. Your platform or receiver may supply a <strong>server URL</strong> and <strong>stream key</strong> separately, or one <strong>combined URL</strong>. Find these in its streaming dashboard. Choose your title and audience settings there too.</p>
 
-    <main id="main-content">
-      <header class="page-head">
-        <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/guides/">Guides</a> <span aria-hidden="true">/</span> <span aria-current="page">Phone to platform</span></nav>
-        <p class="eyebrow">Direct streaming</p>
-        <h1 class="page-title">Stream straight from your phone.</h1>
-        <p class="lede">Send Roam directly to Twitch, Kick, a restreaming service, or any other compatible RTMPS or encrypted SRT destination.</p>
-      </header>
+<h3 id="url">What goes in Stream URL</h3>
+<p>Roam uses one <strong>Stream URL</strong> field. For ordinary RTMP or RTMPS destinations with separate server and key fields, join them with one slash at the boundary.</p>
+<div class="url-anatomy">
+  <div class="url-parts">
+    <div><span class="anatomy-label">Server URL</span><code>rtmps://ingest.example.com/app</code></div>
+    <span aria-label="plus">+</span>
+    <div><span class="anatomy-label">Your stream key</span><code class="key">YOUR_STREAM_KEY</code></div>
+  </div>
+  <span class="anatomy-label">Complete URL to enter in Roam</span>
+  <div class="url-result"><code>rtmps://ingest.example.com/app/<span class="key">YOUR_STREAM_KEY</span></code></div>
+  <p>This is an illustration. <code>example.com</code> is not a streaming server, and <code>YOUR_STREAM_KEY</code> must be replaced with your key.</p>
+</div>
+<p>Keep the server's full path. If it already ends in <code>/</code>, do not add another slash. Keep any prefix or slash that belongs inside the key.</p>
+<p>If the service offers a <strong>combined URL</strong>, copy it unchanged. It may already include the key or private Stream ID. Keep its port and all parameters after <code>?</code>; do not append another key.</p>
+<p>Your public channel page is different. An address beginning with <code>https://www.twitch.tv/</code> opens a webpage; it is not the streaming destination.</p>
 
-      <article class="prose">
-        <h2 id="destination">1. Get your destination</h2>
-        <p>Open the streaming settings or creator dashboard for your platform or service. Find its server address and your private stream key.</p>
-        <p>Roam uses one complete URL. If the service gives you the server and key separately, the finished RTMPS destination normally looks like this:</p>
-        <pre class="code-block"><code>rtmps://server.example/app/your-private-stream-key</code></pre>
-        <p>Use the exact server format supplied by your service. If it supplies SRT instead, the SRT URL must include a passphrase because Roam blocks unencrypted SRT.</p>
+<span id="services"></span>
+<h3 id="providers">Find your platform</h3>
+<nav class="provider-list" aria-label="Destination examples"><a href="#twitch">Twitch</a><a href="#youtube">YouTube</a><a href="#kick">Kick</a><a href="#streamrun">Streamrun</a><a href="#other">Another destination</a></nav>
+<details class="provider" id="twitch">
+  <summary>Twitch</summary>
+  <div class="provider-body">
+    <ol>
+      <li>Open <strong>Creator Dashboard &gt; Settings &gt; Stream</strong> and copy your stream key. <a href="https://help.twitch.tv/s/article/creator-dashboard?language=en_US">Twitch dashboard help</a></li>
+      <li>Replace <code>YOUR_TWITCH_STREAM_KEY</code> in the example below with your complete key.</li>
+    </ol>
+    <pre><code>rtmp://ingest.global-contribute.live-video.net/app/YOUR_TWITCH_STREAM_KEY</code></pre>
+    <p>This is Twitch's published default RTMP destination. Regional alternatives are listed on its <a href="https://help.twitch.tv/s/twitch-ingest-recommendation?language=en_US">ingest recommendation page</a>.</p>
+  </div>
+</details>
 
-        <h2 id="roam">2. Enter it in Roam</h2>
-        <ol>
-          <li>Open <strong>Settings &gt; Stream</strong>.</li>
-          <li>Paste the complete RTMPS or encrypted SRT URL into <strong>Stream URL</strong>.</li>
-          <li>Save it as one of the four destinations if you expect to use it again.</li>
-          <li>Open <strong>Video quality</strong>. Start with <strong>Data saver</strong> and <strong>Auto bitrate</strong> for a mobile-data test.</li>
-          <li>Check the microphone meter under <strong>Audio</strong>.</li>
-        </ol>
+<details class="provider" id="youtube">
+  <summary>YouTube</summary>
+  <div class="provider-body">
+    <ol>
+      <li>Open <strong>YouTube Studio &gt; Create &gt; Go Live</strong>. Create or select your broadcast and choose its visibility.</li>
+      <li>Copy <strong>Stream URL</strong> and <strong>Stream key</strong> from Live Control Room. Join them with one slash to get your complete stream address.</li>
+    </ol>
+    <p>For RTMPS, use the lock beside Stream URL to obtain YouTube's encrypted destination. Copy the entire address: its hostname changes as well as the protocol. <a href="https://support.google.com/youtube/answer/10364924?hl=en">YouTube RTMPS setup</a></p>
+    <pre><code>rtmp://a.rtmp.youtube.com/live2/YOUR_YOUTUBE_STREAM_KEY
+rtmps://a.rtmps.youtube.com/live2/YOUR_YOUTUBE_STREAM_KEY</code></pre>
+    <p>These show the usual shapes. Use the server supplied by your own Live Control Room if it differs.</p>
+  </div>
+</details>
 
-        <h2 id="test">3. Run the first test</h2>
-        <ol>
-          <li>Use a platform test mode, private destination, or unlisted stream if one is available.</li>
-          <li>Hold <strong>Go Live</strong> until the ring completes.</li>
-          <li>Confirm Roam says <strong>LIVE</strong>, the timer continues, the microphone moves, and the platform receives video.</li>
-          <li>Watch the NET status while moving between Wi-Fi and mobile data.</li>
-          <li>Press <strong>Stop</strong> when finished and confirm the platform has ended the stream.</li>
-        </ol>
-        <p>NET measures Roam's connection to the Stream URL you entered. It does not measure phone signal bars, general internet access, or the path after that destination receives your feed. Tap NET for details.</p>
+<details class="provider" id="kick">
+  <summary>Kick</summary>
+  <div class="provider-body">
+    <ol>
+      <li>Open Kick's Creator Dashboard and find <strong>Stream URL and Key</strong>. Copy both values.</li>
+      <li>Set your title and category using <strong>Edit Stream Info</strong>. <a href="https://help.kick.com/en/articles/7066931-how-to-stream-on-kick-com">Kick streaming setup</a></li>
+      <li>Join the server URL and key with one slash to get your complete stream address.</li>
+    </ol>
+    <pre><code>rtmps://fa723fc1b171.global-contribute.live-video.net:443/app/YOUR_KICK_STREAM_KEY</code></pre>
+    <p>Kick currently documents this RTMPS server. Use your dashboard's server if it differs. <a href="https://help.kick.com/en/articles/7338443-how-to-stream-mobile-games-to-kick">Kick's documented destination</a></p>
+  </div>
+</details>
 
-        <h2 id="troubleshooting">Troubleshooting</h2>
-        <p>If Roam rejects the URL, check that it starts with <code>rtmps://</code>, <code>rtmpts://</code>, or <code>srt://</code>. Plain <code>rtmp://</code> and SRT without a passphrase are blocked.</p>
-        <p>If Roam stays on Connecting, confirm an ordinary website loads, rotate the stream key if it may have been exposed, and compare the server and key with the platform dashboard again.</p>
+<details class="provider" id="streamrun">
+  <summary>Streamrun</summary>
+  <div class="provider-body">
+    <ol>
+      <li>Configure a <strong>Horizontal</strong> Input Stream in Streamrun.</li>
+      <li>Open <strong>Stream URL &amp; Key</strong>, choose <strong>SRT</strong>, then <strong>Show combined URL</strong>.</li>
+      <li>Copy that entire combined URL. Keep its Stream ID, port and other parameters intact. <a href="https://streamrun.com/docs/input-stream">Streamrun Input Stream guide</a></li>
+    </ol>
+    <p>Example shape only:</p>
+    <pre><code>srt://ingest.streamrun.io:8890?streamid=publish:YOUR_INPUT_ID/YOUR_PRIVATE_KEY&amp;pkt_size=1316&amp;latency=500000</code></pre>
+    <p>Copy your own combined URL instead of reconstructing this example. RTMP is another input choice: combine its supplied server and key if they are separate. Choose RTMP or SRT for Roam.</p>
+  </div>
+</details>
 
-        <div class="callout danger">
-          <h3>Keep the complete URL private</h3>
-          <p>The complete destination contains your stream key or SRT passphrase. Do not put it in screenshots, messages, public posts, or diagnostics. Rotate it if it is exposed.</p>
-        </div>
+<span id="other-service"></span>
+<details class="provider" id="other">
+  <summary>Another platform, relay or receiver</summary>
+  <div class="provider-body">
+    <p>Use the complete compatible RTMP, RTMPS or SRT destination supplied by the service. Preserve its path, key, port and parameters. Some services put the key inside the URL; others give you two fields to combine.</p>
+    <p>Roam accepts RTMP and SRT without encryption as well as RTMPS and passphrase-protected SRT. RTMPS encrypts the connection; passphrase-protected SRT encrypts video and audio. Adding an <code>s</code> to an RTMP URL does not by itself create a working RTMPS destination.</p>
+    <p>For your own home computer, follow the <a href="/guides/stream-to-obs/">phone-to-OBS guide</a>.</p>
+  </div>
+</details>
 
-        <p>For other app controls, see <a href="/guides/how-to-use/">Using Roam</a>. If something fails, see <a href="/support/">Support</a>.</p>
-      </article>
-    </main>
+<h2 id="enter-url">2. Enter it in Roam</h2>
+<p>Tap the <strong>Settings gear &gt; Stream</strong> and paste your complete address into <strong>Stream URL</strong>.</p>
 
-    <footer class="site-footer">
-      <span>Roam Live</span>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="/guides/">Guides</a>
-        <a href="/support/">Support</a>
-        <a href="/privacy/">Privacy</a>
-      </nav>
-    </footer>
-  </body>
-</html>
+<h2 id="go-live">3. Hold Go Live</h2>
+<p>Return to the main camera screen. Press and hold <strong>HOLD TO GO LIVE</strong> to start your stream.</p>
+
+<h2 id="confirm-live">4. Confirm you are live</h2>
+<p>The status pill at the upper left turns red and reads <strong>LIVE</strong> when Roam connects. It also shows your elapsed stream time and current bitrate in kbps. <strong>CONNECTING</strong> means the connection is being established; <strong>RECONNECTING</strong> shows a retry attempt; <strong>ERROR</strong> includes a short explanation of the problem.</p>
+<p>Confirm the picture and sound in your platform or receiver too. For a scheduled YouTube broadcast, wait for its preview in Live Control Room and press <strong>Go live</strong> there if required. <a href="https://support.google.com/youtube/answer/2907883?hl=en">YouTube encoder setup</a></p>
+<p>If you use Streamrun, its output destination must also be configured to send the received video onward to viewers. <a href="https://streamrun.com/docs/output-destinations">Streamrun output destinations</a></p>
+<p>Tap <strong>Stop</strong> in Roam when finished. Its status returns to <strong>NOT LIVE</strong>. Check that your platform or relay has ended its broadcast too.</p>
+
+<span id="test"></span>
+<h2 id="testing">Test before a public broadcast</h2>
+<h3>Twitch bandwidth test</h3>
+<p>Before starting a test, append <code>?bandwidthtest=true</code> after the key in your Twitch stream address:</p>
+<pre><code>rtmp://ingest.global-contribute.live-video.net/app/YOUR_TWITCH_STREAM_KEY?bandwidthtest=true</code></pre>
+<p>Enter the complete test address in Roam and start the stream. Twitch documents this parameter as disabling live viewing while you check the connection in <a href="https://inspector.twitch.tv/">Twitch Inspector</a>. Inspector checks connection health; it is not a viewer playback test. Stop the stream and remove the parameter before your normal broadcast. <a href="https://dev.twitch.tv/docs/video-broadcast/">Twitch broadcasting guide</a></p>
+<h3>Audience settings and playback</h3>
+<ul>
+  <li><strong>YouTube:</strong> choose <strong>Private</strong> for you and invited viewers, or <strong>Unlisted</strong> for anyone with the link. Check visibility before starting. <a href="https://support.google.com/youtube/answer/157177?hl=en">YouTube visibility settings</a></li>
+  <li><strong>Kick or a relay:</strong> confirm the actual audience and output controls in its dashboard before sending video.</li>
+</ul>
+<p>For a playback test, move something in front of the camera and speak. Watch and listen at the receiving end. A connection indicator or audio meter alone cannot show whether the final picture and sound are usable. Use headphones for playback or keep it away from the streaming microphone to avoid echo.</p>
+
+<h2 id="troubleshooting">If it does not connect</h2>
+<ol>
+  <li><strong>Check the whole destination.</strong> Include its protocol, server, path and key. Remove accidental spaces and line breaks. Keep the service's parameters.</li>
+  <li><strong>Check internet access.</strong> Confirm an ordinary website loads on the phone. Check the receiving service or home computer is available too.</li>
+  <li><strong>Check the dashboard.</strong> Compare the current server and key, and make sure the selected broadcast or input is ready to receive video.</li>
+</ol>
+<p>A failed connection alone is not a reason to reset a working key. If a key was exposed, reset it with the provider and update every saved destination or relay that uses it. Keep complete destinations out of screenshots and public support posts.</p>
+<p>For chat inside the video, see <a href="/faq/#chat-on-stream">the StreamElements chat instructions</a>. For other controls, see <a href="/guides/how-to-use/">Using Roam</a>, or open <a href="/support/">Support</a> if you are stuck.</p>
+<div class="next-guide"><p>Need something else?</p><a href="/guides/">Choose another guide <span aria-hidden="true">→</span></a></div></article></div></main><footer class="site-footer"><div class="wrap footer-inner"><div class="footer-brand"><span class="live-dot" aria-hidden="true"></span><span>Roam Live · IRL streaming on Android</span></div><nav class="footer-links" aria-label="Footer navigation"><a href="/guides/">Guides</a><a href="/faq/">FAQs</a><a href="/support/">Support</a><a id="privacy-title" href="/privacy/">Privacy</a></nav></div></footer></body></html>
