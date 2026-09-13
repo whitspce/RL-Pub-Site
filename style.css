@@ -19,6 +19,7 @@
 .destination-choices a:hover{border-color:var(--green);color:var(--ink)}
 .destination-choices strong{font-size:.8rem;line-height:1.5;text-decoration:underline;text-decoration-color:#65735d;text-underline-offset:3px}
 .destination-choices small{display:block;color:var(--muted);font-size:.73rem;line-height:1.5}
+.destination-other{display:block;color:var(--muted);font-size:.73rem;margin-top:12px}
 .obs-control-note{display:flex;gap:12px;align-items:start;margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
 .obs-control-note>svg{width:20px;height:20px;flex-shrink:0;color:var(--green);margin-top:2px}
 .obs-control-note strong{display:block;font-size:.8rem;margin-bottom:5px}
