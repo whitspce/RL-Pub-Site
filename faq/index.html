@@ -82,23 +82,24 @@
     <summary>Does the chat I see on my phone appear in the broadcast?</summary>
     <div class="faq-answer">
       <p>The panel under <strong>Settings &gt; Chat</strong> is for you on the phone. It is not included in the outgoing video. Enter a public Twitch or Kick channel name, or a YouTube channel handle, then enable <strong>Show chat panel</strong>.</p>
-      <p>You can change its text size, width and side. To show chat inside the video viewers receive, use a web overlay such as the <a href="#chat-on-stream">StreamElements example below</a>.</p>
+      <p>You can change its text size, width and side. To show chat inside the video viewers receive, follow the <a href="#chat-on-stream">Roam Chat instructions below</a>.</p>
     </div>
   </details>
   <details class="faq-item" id="chat-on-stream">
     <summary>How do I put Twitch chat into the video?</summary>
     <div class="faq-answer">
-      <p>You can use any site or program that creates a web overlay Roam can load. This walkthrough uses StreamElements, where you can arrange the chat on a full video canvas before adding it to Roam.</p>
+      <p><a href="https://chat.roamlive.app/">Roam Chat</a> puts Twitch chat into the video your viewers see. You can also use other compatible web overlays.</p>
       <ol>
-        <li>Open StreamElements for your Twitch channel and create a new overlay with a <strong>1920 × 1080</strong> canvas.</li>
-        <li>Add <strong>Stream Tools &gt; Your Stream's Chat</strong>. Resize and position the chat box to suit your layout. Use StreamElements' settings to choose the font, text size, colours and other details you prefer.</li>
-        <li>Save the overlay and copy its overlay URL using the link button. <a href="https://support.streamelements.com/hc/en-us/articles/18771535988370-Adding-a-Twitch-Chat-Overlay-to-your-Stream">StreamElements chat-widget instructions</a></li>
-        <li>In Roam, open <strong>Settings &gt; Overlays &gt; Overlay editor</strong>, choose <strong>Web &gt; Add web overlay</strong>, and paste the HTTPS overlay URL into <strong>URL</strong>.</li>
-        <li>Keep the layer visible, press <strong>Save</strong>, and return to Main. Send a test chat message and check that it appears in the received video.</li>
+        <li>Open <a href="https://chat.roamlive.app/">chat.roamlive.app</a>. Enter your channel name or Twitch channel link under <strong>Twitch channel</strong>, then press <strong>Connect</strong>. No Twitch login is needed.</li>
+        <li>Keep the default appearance or adjust options such as <strong>Text size</strong>, <strong>Message spacing</strong> and <strong>Background</strong>. The <strong>Sample</strong> preview lets you try the look without waiting for messages.</li>
+        <li>Press <strong>Copy overlay URL</strong>.</li>
+        <li>In Roam Live, open <strong>Settings &gt; Overlays &gt; Overlay editor</strong>. Choose <strong>Web</strong>, confirm <strong>Add web overlay</strong> if prompted, and paste the copied link into <strong>URL</strong>.</li>
+        <li>Use <strong>Width</strong> and <strong>Height</strong> to choose the chat area, then the <strong>X</strong> and <strong>Y</strong> sliders under <strong>Position</strong> to place it. Longer messages wrap within that width. Keep the layer visible and press <strong>Save</strong>.</li>
+        <li>Return to the camera screen and send a new message in your Twitch chat. Check that it appears where you want it, then check the result in your stream.</li>
       </ol>
-      <p>Roam's editor shows a placeholder for web overlays, not the live webpage. Arrange the widget within StreamElements: Roam displays its page across the full video frame. Test the actual widget before relying on it during a broadcast.</p>
-      <p>Web overlays use more phone resources than text or image layers. If you already produce your stream in OBS, you can add the overlay there as a Browser source instead. <a href="https://support.streamelements.com/hc/en-us/articles/10474479981074-Adding-Overlays-to-OBS-Studio">StreamElements in OBS</a></p>
-      <p>Keep the overlay URL private; it can contain an access token. <a href="https://support.streamelements.com/hc/en-us/articles/10474584767762-Getting-Started-with-SE-Live">StreamElements overlay privacy note</a></p>
+      <p>Chat appears as new messages arrive after connecting. Earlier messages are not replayed. Roam's overlay editor shows a placeholder; check the actual chat on the camera screen after saving.</p>
+      <p>If you change the appearance on Roam Chat later, copy the updated overlay URL and replace the old one in Roam. Change text size on the website; use Roam's Width and Height controls to change the area it fits into.</p>
+      <p>If you stream through OBS at home, add the copied URL there under <strong>Sources &gt; + &gt; Browser</strong>, then set its width, height and position in OBS. This keeps the chat overlay's processing on your computer.</p>
     </div>
   </details>
   <details class="faq-item" id="alert-audio">
@@ -112,7 +113,7 @@
     <summary>Why is the chat panel empty or missing messages?</summary>
     <div class="faq-answer">
       <p>Check that <strong>Show chat panel</strong> is enabled and that the channel name or YouTube handle is correct. Confirm there are new messages in that channel and that the phone has internet access. YouTube needs an active live chat.</p>
-      <p>Roam reads external chat services, so outages and service changes can affect messages independently of the camera stream. YouTube chat uses an unofficial interface and may stop working when YouTube changes its site. A working phone chat panel also does not prove a separate StreamElements overlay is connected.</p>
+      <p>Roam reads external chat services, so outages and service changes can affect messages independently of the camera stream. YouTube chat uses an unofficial interface and may stop working when YouTube changes its site. A working phone chat panel also does not prove a separate web overlay is connected.</p>
     </div>
   </details>
 </section>
