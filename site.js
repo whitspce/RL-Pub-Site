@@ -1,4 +1,22 @@
 (() => {
+  const copyFeedback = document.querySelector('[data-copy-feedback]');
+  if (navigator.clipboard?.writeText && copyFeedback) {
+    document.querySelectorAll('[data-copy-text]').forEach(button => {
+      button.hidden = false;
+      button.addEventListener('click', async () => {
+        const text = button.dataset.copyText;
+        copyFeedback.textContent = '';
+        try {
+          await navigator.clipboard.writeText(text);
+          copyFeedback.textContent = `Copied ${text}. Paste it into the Text field in Roam.`;
+          button.textContent = 'Copied';
+        } catch {
+          copyFeedback.textContent = 'Copy was unavailable. Select the text beside the button and copy it.';
+          button.textContent = 'Select text to copy';
+        }
+      });
+    });
+  }
   const openAnchor = () => {
     let id;
     try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }

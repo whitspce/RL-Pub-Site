@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111211"><title>Overlays for your stream | Roam Live</title><meta name="description" content="Add overlays to Roam Live: Twitch chat, time, date, stream duration, city, speed, images and web overlays. Setup steps and notes on battery use."><link rel="canonical" href="https://roamlive.app/overlays/"><link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="stylesheet" href="/style.css?v=13b9493ed096"><meta property="og:type" content="website"><meta property="og:site_name" content="Roam Live"><meta property="og:title" content="Overlays for your stream | Roam Live"><meta property="og:description" content="Add overlays to Roam Live: Twitch chat, time, date, stream duration, city, speed, images and web overlays. Setup steps and notes on battery use."><meta property="og:url" content="https://roamlive.app/overlays/"><meta property="og:image" content="https://roamlive.app/assets/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Roam Live. IRL streaming on Android."><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Roam Live","item":"https://roamlive.app/"},{"@type":"ListItem","position":2,"name":"Overlays for your stream","item":"https://roamlive.app/overlays/"}]}</script><script src="/site.js" defer></script></head>
+<body><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><div class="wrap header-inner"><a class="brand" href="/" aria-label="Roam Live home"><img src="/assets/wordmark.png" width="659" height="230" alt="Roam Live"></a><nav class="site-nav" aria-label="Main navigation"><a href="/guides/">Guides</a><a href="/overlays/" aria-current="page">Overlays</a><a href="/faq/">FAQs</a><a href="/support/">Support</a><a class="nav-download" href="https://play.google.com/store/apps/details?id=dev.whitespc.roam">Get Roam <span aria-hidden="true">↗</span></a></nav></div></header><main id="main-content" class="wrap overlays-page"><header class="page-head"><div class="breadcrumbs"><a href="/">Roam Live</a><span aria-hidden="true">/</span><span aria-current="page">Overlays</span></div><p class="eyebrow">Overlays</p><h1>Overlays for your stream</h1><p class="lead">Add chat, live text, location or your own graphics to the video your viewers see.</p></header><div class="guide-layout"><aside class="page-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#chat">Chat for viewers</a></li><li><a href="#live-text">Time, date and other live text</a></li><li><a href="#location">City, speed and other location values</a></li><li><a href="#images">Your own text and images</a></li><li><a href="#web">Other web overlays</a></li></ol><div class="toc-extra"><a href="/guides/">← All guides</a><a href="/support/">Still need a hand? →</a></div></aside><article class="prose"><nav class="overlay-picker" aria-label="Choose an overlay">
+  <a href="#chat"><span class="overlay-picker-example" aria-hidden="true">Hello, chat!</span><strong>Chat for viewers</strong><span>Put Twitch messages into your video.</span></a>
+  <a href="#live-text"><span class="overlay-picker-example" aria-hidden="true">Live for 12:34</span><strong>Live text</strong><span>Time, date, battery and stream information.</span></a>
+  <a href="#location"><span class="overlay-picker-example" aria-hidden="true">Location: London</span><strong>Location</strong><span>City, speed, altitude and coordinates.</span></a>
+  <a href="#images"><span class="overlay-picker-example" aria-hidden="true">Your logo here</span><strong>Images &amp; web</strong><span>Add your own graphics or an overlay URL.</span></a>
+</nav>
+<p>Overlays appear in the video your viewers receive. Open <strong>Settings &gt; Overlays &gt; Overlay editor</strong> in Roam Live to add them. Choose an option below for the steps.</p>
+<p class="sr-only" data-copy-feedback role="status" aria-live="polite"></p>
+
+<h2 id="chat">Chat for viewers</h2>
+<p><a href="https://chat.roamlive.app/">Roam Chat</a> shows Twitch messages, badges and emotes in your stream. Choose the appearance, then copy one link into Roam Live. No Twitch login is needed. Other compatible chat overlays work too.</p>
+<aside class="overlay-cost" aria-label="Chat overlay power use"><strong>Extra battery and heat</strong><p>Chat is a web overlay. Running its webpage on your phone can use more battery and produce more heat than a text or image overlay. If OBS at home produces your broadcast, you can add chat there instead.</p></aside>
+<ol>
+  <li>Open <a href="https://chat.roamlive.app/">chat.roamlive.app</a>. Under <strong>Twitch channel</strong>, enter your channel name or Twitch channel link and press <strong>Connect</strong>.</li>
+  <li>Keep the default appearance or change options such as <strong>Text size</strong>, <strong>Message spacing</strong> and <strong>Background</strong>. Use the <strong>Sample</strong> preview to try the appearance without waiting for messages.</li>
+  <li>Press <strong>Copy overlay URL</strong>.</li>
+  <li>In Roam Live, open <strong>Settings &gt; Overlays &gt; Overlay editor</strong>. Choose <strong>Web</strong>, confirm <strong>Add web overlay</strong> if prompted, and paste the copied link into <strong>URL</strong>.</li>
+  <li>Set <strong>Width</strong> and <strong>Height</strong> for the space chat should use. Move it with <strong>Position X</strong> and <strong>Y</strong>, then tap <strong>Save</strong>. Messages wrap within the area you choose.</li>
+  <li>Return to the camera screen and send a new message in your Twitch chat. Check its position, then check the result in your stream.</li>
+</ol>
+<p>Messages appear as they arrive after connecting. Earlier messages are not replayed. The overlay editor shows a placeholder; check the actual chat on the camera screen after saving.</p>
+<p>Change the font size on Roam Chat. Roam Live's Width and Height change the space available to the webpage. If you change settings on Roam Chat later, copy the updated overlay URL and replace the old URL in Roam Live.</p>
+<details class="provider" id="chat-in-obs"><summary>Adding chat to OBS at home</summary><div class="provider-body"><p>Copy the same Roam Chat overlay URL. In OBS, choose <strong>Sources &gt; + &gt; Browser</strong>, paste it into <strong>URL</strong>, and set the browser source's Width and Height. Position it in your scene. Add chat in one place to avoid showing it twice.</p><p>See the <a href="/guides/stream-to-obs/">home OBS guide</a> if you want your computer to compose the final broadcast.</p></div></details>
+
+<h2 id="live-text">Time, date and other live text</h2>
+<p>Roam can replace special text such as <code>{time}</code> with its current value. Combine it with your own wording, and it updates automatically. These use Roam's built-in text overlay, with no webpage to load.</p>
+<ol>
+  <li>Open <strong>Settings &gt; Overlays &gt; Overlay editor</strong> and choose <strong>Text</strong>.</li>
+  <li>Enter your wording in the <strong>Text</strong> field. Use <strong>Insert live value</strong> or copy a value below, keeping the curly brackets.</li>
+  <li>Choose the text size, colour and position, then tap <strong>Save</strong>.</li>
+</ol>
+<div class="overlay-example"><span class="overlay-example-label">Example text</span><code>Live for {stream_time}</code><button type="button" class="copy-value" data-copy-text="Live for {stream_time}" hidden>Copy example</button><p>During a stream, this could show <strong>Live for 12:34</strong>.</p></div>
+<p>The examples below are illustrations. The editor uses sample live values; return to the camera screen after saving to check the current values. Copy the tags exactly as shown, including lowercase letters and brackets. Units such as % and km/h are included automatically. Time and date use your phone's language and regional format. A value that is not available appears as a dash (<code>-</code>).</p>
+<table class="overlay-token-table">
+  <thead><tr><th scope="col">Copy into Text</th><th scope="col">What it shows</th><th scope="col">Example</th></tr></thead>
+  <tbody>
+    <tr><th scope="row"><code>{time}</code><button type="button" class="copy-value" data-copy-text="{time}" aria-label="Copy {time}" hidden>Copy</button></th><td>Current time on the phone.</td><td>14:30</td></tr>
+    <tr><th scope="row"><code>{date}</code><button type="button" class="copy-value" data-copy-text="{date}" aria-label="Copy {date}" hidden>Copy</button></th><td>Current date.</td><td>25 Sep 2026</td></tr>
+    <tr><th scope="row"><code>{day}</code><button type="button" class="copy-value" data-copy-text="{day}" aria-label="Copy {day}" hidden>Copy</button></th><td>Day of the week.</td><td>Friday</td></tr>
+    <tr><th scope="row"><code>{battery}</code><button type="button" class="copy-value" data-copy-text="{battery}" aria-label="Copy {battery}" hidden>Copy</button></th><td>The streaming phone's battery level.</td><td>77%</td></tr>
+    <tr><th scope="row"><code>{bitrate}</code><button type="button" class="copy-value" data-copy-text="{bitrate}" aria-label="Copy {bitrate}" hidden>Copy</button></th><td>Current outgoing bitrate while streaming.</td><td>2500 kbps</td></tr>
+    <tr><th scope="row"><code>{stream_time}</code><button type="button" class="copy-value" data-copy-text="{stream_time}" aria-label="Copy {stream_time}" hidden>Copy</button></th><td>Elapsed stream time. Hours appear for longer streams.</td><td>12:34 or 1:12:34</td></tr>
+    <tr><th scope="row"><code>{compass}</code><button type="button" class="copy-value" data-copy-text="{compass}" aria-label="Copy {compass}" hidden>Copy</button></th><td>The phone's compass direction in degrees. Uses the phone's sensors while active, adding some power use. Availability depends on the phone.</td><td>90°</td></tr>
+  </tbody>
+</table>
+
+<h2 id="location">City, speed and other location values</h2>
+<p>These values work in a normal <strong>Text</strong> layer. Type or paste them into its Text field; they are not listed under Insert live value.</p>
+<aside class="overlay-cost" aria-label="Location overlay power use"><strong>Extra battery and heat</strong><p>Location values activate your phone's location services while needed by a visible overlay. This can increase battery use and heat. Hide or remove the location layer when you no longer need it, then save.</p></aside>
+<h3 id="city">Show your city</h3>
+<ol>
+  <li>Open <strong>Settings &gt; Overlays &gt; Overlay editor</strong> and choose <strong>Text</strong>.</li>
+  <li>Enter <code>Location: {city}</code> in the Text field.</li>
+  <li>Choose a text size, colour and position, then tap <strong>Save</strong>. Read the location notice and allow location access when Android asks. Make sure the phone's Location setting is on.</li>
+  <li>Return to the camera screen and allow time for a location fix and city lookup. Check the name before using it in your stream.</li>
+</ol>
+<div class="overlay-example"><span class="overlay-example-label">Example text</span><code>Location: {city}</code><button type="button" class="copy-value" data-copy-text="Location: {city}" hidden>Copy example</button><p>This shows a city or area name, such as <strong>Location: London</strong>.</p></div>
+<p>Approximate location may be enough for a city name. Speed, altitude and direction of travel may need precise location. City lookup depends on the phone's place-name service and may need internet access; some devices cannot return a city name. Looking up the name may send your coordinates to that service.</p>
+<table class="overlay-token-table">
+  <thead><tr><th scope="col">Copy into Text</th><th scope="col">What it shows</th><th scope="col">Example</th></tr></thead>
+  <tbody>
+    <tr><th scope="row"><code>{city}</code><button type="button" class="copy-value" data-copy-text="{city}" aria-label="Copy {city}" hidden>Copy</button></th><td>City name, or a wider area if a city name is unavailable.</td><td>London</td></tr>
+    <tr><th scope="row"><code>{speed}</code><button type="button" class="copy-value" data-copy-text="{speed}" aria-label="Copy {speed}" hidden>Copy</button></th><td>Speed in kilometres per hour.</td><td>5 km/h</td></tr>
+    <tr><th scope="row"><code>{speed_mph}</code><button type="button" class="copy-value" data-copy-text="{speed_mph}" aria-label="Copy {speed_mph}" hidden>Copy</button></th><td>Speed in miles per hour.</td><td>3 mph</td></tr>
+    <tr><th scope="row"><code>{altitude}</code><button type="button" class="copy-value" data-copy-text="{altitude}" aria-label="Copy {altitude}" hidden>Copy</button></th><td>Altitude reported by the phone, in metres.</td><td>85 m</td></tr>
+    <tr><th scope="row"><code>{lat}</code><button type="button" class="copy-value" data-copy-text="{lat}" aria-label="Copy {lat}" hidden>Copy</button></th><td>Latitude, to five decimal places.</td><td>51.50740</td></tr>
+    <tr><th scope="row"><code>{lng}</code><button type="button" class="copy-value" data-copy-text="{lng}" aria-label="Copy {lng}" hidden>Copy</button></th><td>Longitude, to five decimal places.</td><td>-0.12780</td></tr>
+    <tr><th scope="row"><code>{heading}</code><button type="button" class="copy-value" data-copy-text="{heading}" aria-label="Copy {heading}" hidden>Copy</button></th><td>Direction of travel in degrees, when reported by the location service. This is different from the phone's compass direction.</td><td>180°</td></tr>
+  </tbody>
+</table>
+<p>Location values share information with your viewers. City shows a general area; latitude and longitude can reveal a precise position. Choose only the values you want to broadcast.</p>
+<details class="provider" id="location-help"><summary>Location shows a dash or the wrong area</summary><div class="provider-body"><ul><li>Check that Android's Location setting is on and Roam has location permission.</li><li>Give the phone time to find its position. Moving outdoors can help with a GPS fix.</li><li>For city names, check internet access. A dash can also mean the phone's city-lookup service is unavailable.</li><li>Speed, altitude and heading only appear when the location service supplies them. Values may be inaccurate, especially indoors or with poor reception.</li><li>City names are not street addresses and may describe the wider area. If automatic lookup is unsuitable, use a place name you type yourself in a Text layer.</li></ul></div></details>
+
+<h2 id="images">Your own text and images</h2>
+<p>Use <strong>Text</strong> for a name, activity, social handle or a number you update yourself. A plain number stays as you entered it until you edit and save it.</p>
+<p>Choose <strong>Image</strong> in the overlay editor to select a logo, frame or graphic from your phone. A PNG with a transparent background works well when you want the camera to show around it. Set its size and position, then save.</p>
+<p>The built-in Roam watermark is also a layer. You can show, hide or reposition it in the editor.</p>
+<p>Each item is a separate layer. Select it to edit, use the up and down arrows to change which layer is in front, and use its checkbox to show or hide it. Save to apply your changes. The main-screen Layers control can also change saved layers' visibility.</p>
+
+<h2 id="web">Other web overlays</h2>
+<p>You can add a compatible overlay from another service using its complete HTTPS overlay URL. In the editor, choose <strong>Web</strong>, paste the address into <strong>URL</strong>, set Width, Height and Position X/Y, then save. Use the service's overlay link rather than its settings or dashboard page.</p>
+<aside class="overlay-cost" aria-label="Web overlay power use"><strong>Extra battery and heat</strong><p>A web overlay runs a webpage on the phone. Complex animations, video and multiple web layers can add more work. Use text or an image for simple static content, or put web overlays in OBS when your home computer produces the final stream.</p></aside>
+<p>For an overlay supplied as files, choose <strong>Import HTML or ZIP</strong> instead of entering a URL. Only import files from a source you trust.</p>
+<p>Web overlays show a placeholder in the editor. Check the saved result on the camera screen and in your received stream. Their sound may play on the phone, but Roam does not directly mix webpage audio into the broadcast. If you use OBS at home, configure overlay audio there.</p>
+<p>For a full reference to the editor controls, see <a href="/guides/how-to-use/#overlay-editor">the overlay editor guide</a>.</p>
+<div class="next-guide"><p>Need something else?</p><a href="/guides/">Choose another guide <span aria-hidden="true">→</span></a></div></article></div></main><footer class="site-footer"><div class="wrap footer-inner"><div class="footer-brand"><span class="live-dot" aria-hidden="true"></span><span>Roam Live · IRL streaming on Android</span></div><nav class="footer-links" aria-label="Footer navigation"><a href="/guides/">Guides</a><a href="/overlays/">Overlays</a><a href="/faq/">FAQs</a><a href="/support/">Support</a><a id="privacy-title" href="/privacy/">Privacy</a></nav></div></footer></body></html>
