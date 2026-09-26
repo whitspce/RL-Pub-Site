@@ -36,13 +36,45 @@
 <table class="overlay-token-table">
   <thead><tr><th scope="col">Copy into Text</th><th scope="col">What it shows</th><th scope="col">Example</th></tr></thead>
   <tbody>
-    <tr><th scope="row"><code>{time}</code><button type="button" class="copy-value" data-copy-text="{time}" aria-label="Copy {time}" hidden>Copy</button></th><td>Current time on the phone.</td><td>14:30</td></tr>
+    <tr><th scope="row"><code>{time}</code><button type="button" class="copy-value" data-copy-text="{time}" aria-label="Copy {time}" hidden>Copy</button></th><td>Current time on the phone.</td><td>15:04</td></tr>
     <tr><th scope="row"><code>{date}</code><button type="button" class="copy-value" data-copy-text="{date}" aria-label="Copy {date}" hidden>Copy</button></th><td>Current date.</td><td>25 Sep 2026</td></tr>
     <tr><th scope="row"><code>{day}</code><button type="button" class="copy-value" data-copy-text="{day}" aria-label="Copy {day}" hidden>Copy</button></th><td>Day of the week.</td><td>Friday</td></tr>
     <tr><th scope="row"><code>{battery}</code><button type="button" class="copy-value" data-copy-text="{battery}" aria-label="Copy {battery}" hidden>Copy</button></th><td>The streaming phone's battery level.</td><td>77%</td></tr>
     <tr><th scope="row"><code>{bitrate}</code><button type="button" class="copy-value" data-copy-text="{bitrate}" aria-label="Copy {bitrate}" hidden>Copy</button></th><td>Current outgoing bitrate while streaming.</td><td>2500 kbps</td></tr>
     <tr><th scope="row"><code>{stream_time}</code><button type="button" class="copy-value" data-copy-text="{stream_time}" aria-label="Copy {stream_time}" hidden>Copy</button></th><td>Elapsed stream time. Hours appear for longer streams.</td><td>12:34 or 1:12:34</td></tr>
     <tr><th scope="row"><code>{compass}</code><button type="button" class="copy-value" data-copy-text="{compass}" aria-label="Copy {compass}" hidden>Copy</button></th><td>The phone's compass direction in degrees. Uses the phone's sensors while active, adding some power use. Availability depends on the phone.</td><td>90°</td></tr>
+  </tbody>
+</table>
+
+<h3 id="text-formats">Choose a day, date or time format</h3>
+<p class="site-notice"><strong>Coming in Roam Live 0.10.11.</strong> Use the standard tags above until you've installed version 0.10.11 or later.</p>
+<p>Copy a format into your Text layer, keeping the brackets. You can combine them, for example <code>{day:short-upper} {date:short}</code>. These use the phone's clock, with no location access or webpage needed.</p>
+<p>Examples use Friday, 25 September 2026 at 15:04. All formats use your phone's time zone. Day and month names and AM/PM follow its language. Dates use the Gregorian calendar and digits 0 to 9.</p>
+<h4>Day</h4>
+<table class="overlay-token-table">
+  <thead><tr><th scope="col">Copy into Text</th><th scope="col">Format</th><th scope="col">Example</th></tr></thead>
+  <tbody>
+    <tr><th scope="row"><code>{day:short}</code><button type="button" class="copy-value" data-copy-text="{day:short}" aria-label="Copy {day:short}" hidden>Copy</button></th><td>Abbreviated day.</td><td>Fri</td></tr>
+    <tr><th scope="row"><code>{day:upper}</code><button type="button" class="copy-value" data-copy-text="{day:upper}" aria-label="Copy {day:upper}" hidden>Copy</button></th><td>Full day in capitals.</td><td>FRIDAY</td></tr>
+    <tr><th scope="row"><code>{day:short-upper}</code><button type="button" class="copy-value" data-copy-text="{day:short-upper}" aria-label="Copy {day:short-upper}" hidden>Copy</button></th><td>Abbreviated day in capitals.</td><td>FRI</td></tr>
+  </tbody>
+</table>
+<h4>Date</h4>
+<table class="overlay-token-table">
+  <thead><tr><th scope="col">Copy into Text</th><th scope="col">Format</th><th scope="col">Example</th></tr></thead>
+  <tbody>
+    <tr><th scope="row"><code>{date:short}</code><button type="button" class="copy-value" data-copy-text="{date:short}" aria-label="Copy {date:short}" hidden>Copy</button></th><td>Day and abbreviated month.</td><td>25 Sep</td></tr>
+    <tr><th scope="row"><code>{date:dmy}</code><button type="button" class="copy-value" data-copy-text="{date:dmy}" aria-label="Copy {date:dmy}" hidden>Copy</button></th><td>Day / month / year.</td><td>25/09/2026</td></tr>
+    <tr><th scope="row"><code>{date:mdy}</code><button type="button" class="copy-value" data-copy-text="{date:mdy}" aria-label="Copy {date:mdy}" hidden>Copy</button></th><td>Month / day / year.</td><td>09/25/2026</td></tr>
+    <tr><th scope="row"><code>{date:iso}</code><button type="button" class="copy-value" data-copy-text="{date:iso}" aria-label="Copy {date:iso}" hidden>Copy</button></th><td>Year-month-day.</td><td>2026-09-25</td></tr>
+  </tbody>
+</table>
+<h4>Time</h4>
+<table class="overlay-token-table">
+  <thead><tr><th scope="col">Copy into Text</th><th scope="col">Format</th><th scope="col">Example</th></tr></thead>
+  <tbody>
+    <tr><th scope="row"><code>{time:12}</code><button type="button" class="copy-value" data-copy-text="{time:12}" aria-label="Copy {time:12}" hidden>Copy</button></th><td>12-hour time with AM/PM.</td><td>3:04 PM</td></tr>
+    <tr><th scope="row"><code>{time:24}</code><button type="button" class="copy-value" data-copy-text="{time:24}" aria-label="Copy {time:24}" hidden>Copy</button></th><td>24-hour time.</td><td>15:04</td></tr>
   </tbody>
 </table>
 
