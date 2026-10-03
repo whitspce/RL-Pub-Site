@@ -59,6 +59,15 @@
   <li>Check that it says it is connected.</li>
 </ol>
 <details class="provider">
+  <summary>Check that the two can really see each other</summary>
+  <div class="provider-body">
+    <p>Tailscale can say it is connected while the other device has dropped off. The sure check is on the computer. Open Command Prompt on Windows, or a terminal on Linux, and run:</p>
+    <pre><code>tailscale status</code></pre>
+    <p>On a Mac, run <code>/Applications/Tailscale.app/Contents/MacOS/Tailscale status</code> in Terminal.</p>
+    <p>Your phone should be in the list without the word <strong>offline</strong>. If it says offline, turn Tailscale off and on in the phone's Tailscale app, or restart the phone, and run the command again.</p>
+  </div>
+</details>
+<details class="provider">
   <summary>Can't find Tailscale on your computer?</summary>
   <div class="provider-body">
     <p>On Windows, Tailscale is an icon near the clock. If you can't see it, click the small up arrow there. Right-click the icon and choose <strong>Log in</strong>.</p>
@@ -163,22 +172,28 @@ tailscale ip -4</code></pre>
 <ol id="websocket">
   <li>Open <strong>Tools</strong>, then <strong>WebSocket Server Settings</strong>.</li>
   <li>Make sure <strong>Enable WebSocket server</strong> is ticked.</li>
-  <li>Make sure <strong>Enable Authentication</strong> is ticked. If <strong>Server Password</strong> is empty, click <strong>Generate Password</strong>.</li>
+  <li>Make sure <strong>Enable Authentication</strong> is ticked.</li>
+  <li>Type a <strong>Server Password</strong> of your own: letters and numbers only, at least 12 of them. Write it down. (<strong>Generate Password</strong> makes one with capitals and symbols, which is hard to type on a phone.)</li>
   <li>Click <strong>OK</strong>.</li>
-  <li>Open <strong>WebSocket Server Settings</strong> again, click <strong>Show Connect Info</strong> and note the <strong>Server Password</strong>.</li>
 </ol>
+<details class="provider">
+  <summary>What Show Connect Info is for</summary>
+  <div class="provider-body">
+    <p><strong>Show Connect Info</strong> in the same window shows the saved password, so you can check it later. It also shows a <strong>Server IP</strong>, usually starting with 192.168 or 10. Don't use that address. Roam needs the Tailscale address from step 3.</p>
+  </div>
+</details>
 <p>In Roam, open <strong>Settings</strong>, then <strong>OBS</strong>, and fill in:</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable reference table"><table>
     <thead><tr><th scope="col">Field</th><th scope="col">What to enter</th></tr></thead>
     <tbody>
-      <tr><td>Host (IP address or hostname)</td><td>Your computer's Tailscale address. Use it even if OBS shows a different Server IP.</td></tr>
+      <tr><td>Host (IP address or hostname)</td><td>Your computer's Tailscale address from step 3. Not the Server IP that OBS shows.</td></tr>
       <tr><td>Port</td><td><code>4455</code></td></tr>
-      <tr><td>Password (required)</td><td>The Server Password from OBS</td></tr>
+      <tr><td>Password (required)</td><td>The Server Password you typed in OBS</td></tr>
     </tbody>
   </table></div>
-<p>Then:</p>
+<p>Then, with OBS open on the computer:</p>
 <ol>
-  <li>Tap <strong>Connect</strong> and wait for <strong>Connected</strong>.</li>
+  <li>Tap <strong>Connect</strong> and wait for <strong>Connected</strong>. If Roam says <strong>OBS authentication failed</strong>, the password is wrong. If it stays on <strong>Connecting...</strong>, the phone can't reach the computer: see <a href="#obs-reach">troubleshooting</a>.</li>
   <li>Turn on <strong>Show OBS control on main screen</strong>. An <strong>OBS</strong> pill now shows at the top of Roam's camera screen.</li>
 </ol>
 
@@ -187,7 +202,7 @@ tailscale ip -4</code></pre>
   <li>In Roam, hold <strong>Go live</strong>. Your phone's picture should show up in OBS within a few seconds.</li>
   <li>Talk. On the computer, the bar beside <strong>Roam phone</strong> in OBS's <strong>Audio Mixer</strong> panel should move.</li>
   <li>If you did step 6, tap the <strong>OBS</strong> pill at the top of Roam's camera screen. It opens the OBS controls. Tap a scene to switch to it.</li>
-  <li id="test-mobile-data">Streaming on mobile data? Turn off Wi-Fi on the phone, check Tailscale is still connected, and try again before you leave home.</li>
+  <li id="test-mobile-data">Streaming on mobile data? Turn off Wi-Fi on the phone, check Tailscale is still connected, and try again before you leave home. If Roam can't connect after the switch, turn Tailscale off and on in the phone's Tailscale app and try again.</li>
 </ol>
 <div class="callout important">
   <p><strong>Going live in Roam only sends your camera to OBS.</strong> Nobody is watching yet. Your viewers see the stream once OBS is streaming.</p>
@@ -318,8 +333,34 @@ tailscale ip -4</code></pre>
 <h3>The OBS control is missing from Roam</h3>
 <p>Turn on <strong>Show OBS control on main screen</strong> in Roam's <strong>Settings</strong> &gt; <strong>OBS</strong>. Hiding the control doesn't disconnect OBS or turn off sync.</p>
 
-<h3>Roam can't connect to OBS</h3>
-<p>Check that Tailscale is connected on both devices, OBS is open and the computer is awake. Check the address, port <code>4455</code>, the password, and that <strong>Enable Authentication</strong> is ticked in OBS. Put only the address in <strong>Host (IP address or hostname)</strong>, without <code>http://</code>, <code>ws://</code>, a port or a path. See OBS's <a href="https://obsproject.com/kb/remote-control-guide">remote control guide</a>.</p>
+<h3 id="obs-reach">Roam can't connect to OBS: find which side is broken</h3>
+<p>Roam's status line tells you a lot. <strong>OBS authentication failed</strong> means the password is wrong. <strong>Connecting...</strong> that never ends means the phone can't reach the computer, and no password change will help. Then check these in order. Each one tells you where the problem is.</p>
+<ol>
+  <li>Is OBS open on the computer, and is the computer awake? Roam can only connect while OBS is running.</li>
+  <li>On the computer, open its web browser and go to <code>http://127.0.0.1:4455/</code>. A plain page that says <strong>426</strong> or <strong>Upgrade Required</strong> means OBS's WebSocket server is on. Anything else: open <strong>Tools</strong>, then <strong>WebSocket Server Settings</strong>, and tick <strong>Enable WebSocket server</strong>.</li>
+  <li>On the computer, run <code>tailscale status</code> (see <a href="#tailscale-computer">step 2</a> for the command on each system). If your phone's line says <strong>offline</strong>, the phone's Tailscale has dropped off, whatever its app shows. Turn Tailscale off and on in the phone's app, or restart the phone, and run the command again.</li>
+  <li>On the phone, open its browser and type <code>http://YOUR-COMPUTER-ADDRESS:4455/</code> into the address bar at the top, with your computer's Tailscale address in place of YOUR-COMPUTER-ADDRESS and with the <code>http://</code> part. The same 426 page means the phone reaches OBS, so the problem is in Roam's OBS settings: the address, the port <code>4455</code>, the password, or <strong>Enable Authentication</strong> unticked in OBS. If the page never loads, the two devices can't see each other: check both Tailscale apps are signed in to the same account, and that <strong>Allow incoming connections</strong> is on in the computer's Tailscale preferences.</li>
+</ol>
+<p>Put only the address in <strong>Host (IP address or hostname)</strong>, without <code>http://</code>, <code>ws://</code>, a port or a path. See OBS's <a href="https://obsproject.com/kb/remote-control-guide">remote control guide</a>.</p>
+
+<h3>Which password goes where?</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable reference table"><table>
+    <thead><tr><th scope="col">Secret</th><th scope="col">Where it lives</th></tr></thead>
+    <tbody>
+      <tr><td>The passphrase</td><td>Inside the two long addresses from step 3, and nowhere else. OBS and Roam must carry the same one.</td></tr>
+      <tr><td>The WebSocket Server Password</td><td>Only in OBS's <strong>WebSocket Server Settings</strong> and in Roam under <strong>Settings</strong>, then <strong>OBS</strong>, in <strong>Password</strong>.</td></tr>
+    </tbody>
+  </table></div>
+<p>Not sure which is which? Replace both. Make a new passphrase in <a href="#your-details">step 3</a> and paste both addresses again, then type a new Server Password in OBS and in Roam.</p>
+
+<h3>It worked on Wi-Fi but not on mobile data</h3>
+<p>The phone's Tailscale can drop off when the network changes. Turn Wi-Fi off, then turn Tailscale off and on in the phone's Tailscale app. Android shows a key icon at the top of the screen while a VPN such as Tailscale is on. Then run the checks above. To stop Android pausing it on an outing, set Tailscale and Roam Live to <strong>Unrestricted</strong> battery use (the phone's <strong>Settings</strong>, then <strong>Apps</strong>, the app, then <strong>Battery</strong>). Samsung phones need this most.</p>
+
+<h3>Tailscale stopped working after a virus scan or an update</h3>
+<p>Antivirus software can quarantine Tailscale. Repair or reinstall it from <a href="https://tailscale.com/download">tailscale.com</a> and restart the computer. Check that the computer still has the same <code>100.</code> address. A reinstall can give it a new one; if so, build the addresses again in <a href="#your-details">step 3</a> and update OBS and Roam. Check that <strong>Allow incoming connections</strong> is ticked in Tailscale's preferences. If OBS's settings were reset as well, type the Server Password again and check that the <strong>Roam phone</strong> source is still there.</p>
+
+<h3>The feed stops a while after you leave home</h3>
+<p>The computer went to sleep. On Windows, open <strong>Settings</strong>, then <strong>System</strong>, then <strong>Power</strong> (or <strong>Power &amp; battery</strong>), and set sleep while plugged in to <strong>Never</strong>. On a Mac, open <strong>System Settings</strong>, search for sleep, and stop it sleeping automatically while plugged in.</p>
 
 <h3>The picture stops when you switch scenes</h3>
 <p>Put the same <strong>Roam phone</strong> source in every scene, as in <a href="#reuse-source-and-brb">Put your phone in every scene</a>. Check that <strong>Restart playback when source becomes active</strong> and <strong>Close file when inactive</strong> are both unticked. OBS explains these in its <a href="https://obsproject.com/kb/media-sources">media source guide</a>.</p>
