@@ -33,15 +33,16 @@
   <details class="faq-item" id="platform-login">
     <summary>Can I sign in to Twitch, change my title or see viewer count in Roam?</summary>
     <div class="faq-answer">
-      <p>Roam uses a Stream URL and does not include platform login, title editing or viewer counts. Set your title and category in the platform's dashboard and use its stream manager for audience information.</p>
-      <p>The channel fields in <strong>Settings &gt; Chat &amp; TTS</strong> choose which public chat to read. They do not sign you into that account. You do not need a separate Roam account to stream.</p>
+      <p>Yes, since Roam Live 0.10.16. Signing in is optional. Open <strong>Settings &gt; Twitch</strong> and tap <strong>Sign in with Twitch</strong>. The first-run page and the <strong>Stream destination needed</strong> dialog offer it too.</p>
+      <p>Signed in, Roam fills in your Twitch stream address and key, and brings your chat and events, such as follows and redeems, into the chat panel and TTS. <strong>Settings &gt; Twitch</strong> lets you change your stream title and category, and shows your viewer count while you are live. The <strong>Mark</strong> control marks a moment on your live stream so you can find it later.</p>
+      <p>You do not need a Roam account. The channel fields in <strong>Settings &gt; Chat &amp; TTS</strong> still read a public chat without a sign-in. <a href="/guides/twitch/">How the Twitch sign-in works</a></p>
     </div>
   </details>
   <details class="faq-item" id="multiple-platforms">
     <summary>Can I stream to several platforms at once?</summary>
     <div class="faq-answer">
       <p>Yes. Send Roam's feed to a restreaming service or to OBS at home, then distribute it to your platforms from there.</p>
-      <p><strong>Roam deliberately sends to one destination.</strong> We believe restreaming belongs off the phone. Uploading the same feed to several places multiplies the mobile bandwidth it needs. Keeping one upload leaves more room on your connection and keeps the extra distribution work off your phone.</p>
+      <p><strong>Roam deliberately sends to one destination.</strong> Restreaming belongs off the phone. Uploading the same feed to several places multiplies the mobile bandwidth it needs. Keeping one upload leaves more room on your connection and keeps the extra distribution work off your phone.</p>
       <p>For example, sending a 4 Mbps feed to three destinations separately needs about 12 Mbps of upload, before network overhead. Sending it once to a service that distributes it still needs about 4 Mbps from the phone.</p>
 
       <h3>Use a restreaming service</h3>
@@ -153,7 +154,7 @@
     <summary>Can I leave Roam or turn the screen off while streaming?</summary>
     <div class="faq-answer">
       <p>Roam uses a foreground streaming service to keep an active stream running when you go to another app or turn the screen off. Its notification provides a way to stop.</p>
-      <p>Android and phone-vendor battery restrictions can still interrupt background work. In <strong>Settings &gt; Reliability &gt; Keep streams running</strong>, open the battery settings and allow Roam to work in the background. Test this on your own phone before a long stream.</p>
+      <p>Android and phone-vendor battery restrictions can still interrupt background work. Tap <strong>Settings &gt; Reliability &gt; Background use</strong> and allow it when Android asks. On Samsung, Xiaomi and some other phones, a line under that row says where the phone's own battery switch is. Test this on your own phone before a long stream.</p>
     </div>
   </details>
   <details class="faq-item" id="reconnecting">
