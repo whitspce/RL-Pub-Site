@@ -26,7 +26,7 @@
   <details class="faq-item" id="start-and-stop">
     <summary>How do I start, stop or change where the stream goes?</summary>
     <div class="faq-answer">
-      <p>Hold the Go Live control on Main to start. Tap Stop to end Roam's stream, including while it is connecting or reconnecting. Check the platform or relay's broadcast status afterwards, since it may keep its output running.</p>
+      <p>To start, hold the pill at the top left of the camera screen for about a second. It reads <strong>Hold to go live</strong>. To end Roam's stream, tap the pill, and when Roam asks "Stop the stream?", tap <strong>Stop</strong>. This works while it is connecting or reconnecting too. Check the platform or relay's broadcast status afterwards, since it may keep its output running.</p>
       <p>Stop before changing the active destination. In <strong>Settings &gt; Stream</strong>, use <strong>Save current URL</strong> to keep a named destination you can select later.</p>
     </div>
   </details>
@@ -59,7 +59,7 @@
         <li>In Restream, add your platform accounts under <strong>Channels</strong>.</li>
         <li>Choose <strong>New Stream &gt; Encoder | RTMP</strong> and enable the channels you want to broadcast to, within your plan's limit.</li>
         <li>Copy the server URL and stream key. Join them with one slash and paste the complete address into <strong>Roam Settings &gt; Stream &gt; Stream URL</strong>. The <a href="/guides/stream-to-platform/#url">URL example</a> shows how.</li>
-        <li>When you are ready to broadcast, hold <strong>Go Live</strong> in Roam. Check that each platform is receiving picture and sound. When finished, stop Roam and confirm every platform has ended its broadcast.</li>
+        <li>When you are ready to broadcast, hold the <strong>Go live</strong> pill in Roam. Check that each platform is receiving picture and sound. When finished, tap the pill, then <strong>Stop</strong>, and check that every platform has ended its broadcast.</li>
       </ol>
       <p>Use Restream's <a href="https://support.restream.io/en/articles/6505602-go-live-with-streaming-software">streaming-software instructions</a> for this route. You can also choose <a href="https://support.restream.io/en/articles/8523770-encrypt-your-stream-with-rtmps">RTMPS on the free plan</a>.</p>
 
@@ -122,7 +122,8 @@
     <summary>Why is my phone hot, or why did an extra camera turn off?</summary>
     <div class="faq-answer">
       <p>Capturing, encoding and uploading video uses power. Dual camera, web overlays, a bright screen and charging can add to the load. Shade the phone and reduce optional work if it gets hot.</p>
-      <p>Roam responds to Android's thermal status. It can lower bitrate, turn off PiP or torch, pause web overlays, and stop the stream at critical heat levels. A thermal warning can therefore explain a feature turning off. Let the phone cool before trying to restore it. The status is Android's heat assessment, not an exact temperature reading.</p>
+      <p>To give the phone its best chance, close other apps before you go live, including anything recording in the background, and start with a cool phone. While live, avoid running anything else over Roam, and keep the phone where air can reach it.</p>
+      <p>Roam responds to Android's thermal status. It lowers the picture quality in steps as the phone warms, and can turn off PiP or torch and pause web overlays. If the phone stays at Android's critical level for a minute, Roam ends the stream to protect it. A thermal warning can therefore explain a feature turning off. Let the phone cool before trying to restore it. The status is Android's heat assessment, not an exact temperature reading.</p>
     </div>
   </details>
   <details class="faq-item" id="dual-camera">
@@ -161,7 +162,7 @@
     <summary>What happens when mobile data drops out?</summary>
     <div class="faq-answer">
       <p>Roam retries a dropped stream for the period selected under <strong>Settings &gt; Reliability</strong>: 1, 5 or 15 minutes, or Forever. Auto bitrate can help when a connection weakens, but it cannot send video with no usable connection.</p>
-      <p>The platform or relay decides what viewers see during the gap and whether its broadcast stays open. Local recording can continue while Roam reconnects. Tap Stop if you want to end the attempt rather than keep retrying.</p>
+      <p>The platform or relay decides what viewers see during the gap and whether its broadcast stays open. Local recording can continue while Roam reconnects. To end the attempt rather than keep retrying, tap the <strong>RECONNECTING</strong> pill, then <strong>Stop</strong>.</p>
     </div>
   </details>
   <details class="faq-item" id="local-recording">
